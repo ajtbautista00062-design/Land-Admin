@@ -1,0 +1,1047 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Philippine Land Law Guide</title>
+<meta name="description" content="Interactive reviewer on Land Governance, Administration, and Management in the Philippines, with Supreme Court case digests, quizzes, flashcards, and games.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>:root{
+  --bg:#f5f1e8;--surface:#fffdf8;--surface2:#f0e9da;--ink:#1c2520;--muted:#5b665f;--line:#e1d8c5;
+  --green:#2f6b4f;--terra:#a64b2a;--teal:#1f5f6b;--ochre:#a8781a;
+  --hl:#fbeec4;--hl-ink:#1c2520;--law:#8a3f18;--ag:#1d5866;--ok:#2d7a4d;--bad:#b23b2a;
+  --shadow:0 1px 2px rgba(28,37,32,.06),0 8px 24px rgba(28,37,32,.07);
+  --radius:14px;--c:var(--green);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#101613;--surface:#172019;--surface2:#1e2a23;--ink:#e6ece7;--muted:#9eaaa2;--line:#2b3830;
+    --green:#74c39a;--terra:#e8906a;--teal:#72c6d4;--ochre:#e3b65a;
+    --hl:#4a3f1b;--hl-ink:#fff4cf;--law:#f1a983;--ag:#86d3e0;--ok:#72d39c;--bad:#f2907f;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101613;--surface:#172019;--surface2:#1e2a23;--ink:#e6ece7;--muted:#9eaaa2;--line:#2b3830;
+  --green:#74c39a;--terra:#e8906a;--teal:#72c6d4;--ochre:#e3b65a;
+  --hl:#4a3f1b;--hl-ink:#fff4cf;--law:#f1a983;--ag:#86d3e0;--ok:#72d39c;--bad:#f2907f;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.62 "Inter","Segoe UI",system-ui,-apple-system,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,.serif{font-family:"Fraunces",Georgia,"Times New Roman",serif;letter-spacing:-.01em}
+a{color:var(--ag)}
+button{font:inherit;color:inherit}
+p{margin:0 0 .8em}
+:focus-visible{outline:3px solid color-mix(in srgb,var(--c) 60%,transparent);outline-offset:2px;border-radius:6px}
+.acc-green{--c:var(--green)}.acc-terracotta{--c:var(--terra)}.acc-teal{--c:var(--teal)}
+.acc-green,.acc-terracotta,.acc-teal,:root{--cs:color-mix(in srgb,var(--c) 9%,var(--surface));--cs2:color-mix(in srgb,var(--c) 22%,var(--surface))}
+
+/* inline highlights */
+.k{font-weight:700;background:var(--hl);color:var(--hl-ink);border-radius:4px;padding:0 3px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.k[data-tip]{cursor:help;text-decoration:underline dotted color-mix(in srgb,var(--ink) 45%,transparent);text-underline-offset:3px}
+.law{font-weight:650;color:var(--law)}
+.ag{font-weight:650;color:var(--ag)}
+.dt{font-weight:650;border-bottom:1.5px dotted currentColor}
+body.recall .lesson :is(.k,.law,.dt,.ag):not(.shown){filter:blur(5px);cursor:pointer;user-select:none;transition:filter .2s}
+body.recall .lesson :is(.k,.law,.dt,.ag):not(.shown):hover{filter:blur(3px)}
+body.recall .lesson .card:not(.shown) .card-b{filter:blur(6px);user-select:none}
+body.recall .lesson .card:not(.shown){cursor:pointer}
+body.recall .lesson .card:not(.shown)::after{content:"Tap to reveal";position:absolute;right:10px;bottom:8px;font-size:.72rem;font-weight:700;color:var(--c);background:var(--surface);padding:2px 8px;border-radius:99px;border:1px solid var(--line)}
+
+/* top bar */
+#readbar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--green),var(--ochre),var(--terra));z-index:60}
+.topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:12px;padding:10px 18px;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:.95rem;text-decoration:none;color:var(--ink);min-width:0}
+.brand svg{flex:none}
+.brand span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-spacer{flex:1}
+.prog{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--muted);font-weight:600}
+.prog-bar{width:110px;height:7px;border-radius:99px;background:var(--surface2);overflow:hidden}
+.prog-bar i{display:block;height:100%;width:0;background:var(--green);border-radius:99px;transition:width .4s}
+.iconbtn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:6px 12px;cursor:pointer;font-size:.82rem;font-weight:650}
+.iconbtn:hover{border-color:var(--c)}
+.iconbtn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+#menuBtn{display:none}
+
+/* layout */
+.layout{display:grid;grid-template-columns:272px minmax(0,1fr);max-width:1240px;margin:0 auto}
+.sidebar{position:sticky;top:57px;align-self:start;height:calc(100vh - 57px);overflow:auto;padding:22px 14px 40px 20px;border-right:1px solid var(--line)}
+.sb-group{margin-bottom:16px}
+.sb-h{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--c);font-weight:800;margin:0 0 6px 6px}
+.sidebar a{display:flex;gap:8px;align-items:flex-start;text-decoration:none;color:var(--muted);font-size:.86rem;line-height:1.35;padding:6px 8px;border-radius:8px}
+.sidebar a:hover{background:var(--surface2);color:var(--ink)}
+.sidebar a.active{background:var(--cs);color:var(--ink);font-weight:650}
+.sidebar .dot{flex:none;width:18px;height:18px;border-radius:50%;border:2px solid var(--line);margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:.62rem;color:#fff}
+.sidebar a.done .dot{background:var(--ok);border-color:var(--ok)}
+.sidebar a.done .dot::after{content:"✓"}
+.sidebar .code{font-weight:800;color:var(--c);min-width:24px}
+main{padding:28px 34px 80px;min-width:0}
+.wrap{max-width:820px;margin:0 auto}
+
+/* hero */
+.hero{position:relative;border-radius:22px;overflow:hidden;background:#1f3a2e;color:#f6efdd;padding:46px 40px 38px;box-shadow:var(--shadow)}
+.hero svg.contour{position:absolute;inset:0;width:100%;height:100%;opacity:.25;pointer-events:none}
+.hero>*{position:relative}
+.eyebrow{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:#dcc78f;font-weight:800}
+.hero h1{font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.06;margin:.3em 0 .35em;font-weight:650}
+.hero .lede{font-size:1.08rem;color:#e6dfcc;max-width:46ch}
+.stats{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 22px}
+.stat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:99px;padding:5px 12px;font-size:.82rem;font-weight:650}
+.stat b{color:#ffe7a3}
+.hero-cta{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:10px 16px;font-weight:700;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;text-decoration:none;font-size:.92rem;transition:transform .12s,box-shadow .12s,background .12s}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+.btn.primary{background:var(--c);border-color:var(--c);color:#fff}
+:root[data-theme="dark"] .btn.primary{color:#0e1411}
+.hero .btn{background:#f6efdd;color:#1f3a2e;border-color:#f6efdd}
+.hero .btn.ghost{background:transparent;color:#f6efdd;border-color:rgba(255,255,255,.35)}
+.btn.small{padding:6px 11px;font-size:.82rem;border-radius:10px}
+
+/* three Ls */
+.three{margin:26px 0 8px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+.three h2{font-size:1.25rem;margin:0 0 4px}
+.three .hint{color:var(--muted);font-size:.88rem;margin-bottom:12px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.seg button{border:1.5px solid var(--line);background:var(--surface2);border-radius:12px;padding:12px 10px;cursor:pointer;font-weight:750;text-align:left;line-height:1.25}
+.seg button small{display:block;font-weight:500;color:var(--muted);font-size:.76rem;margin-top:3px}
+.seg button[aria-selected="true"]{border-color:var(--c);background:var(--cs);box-shadow:inset 0 0 0 1px var(--c)}
+.seg-panel{margin-top:12px;border-radius:12px;background:var(--cs);padding:14px 16px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.seg-panel div b{display:block;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--c);margin-bottom:3px}
+
+/* parts & lessons */
+.part{margin-top:56px}
+.part-head{border-radius:18px;background:var(--c);color:#fff;padding:22px 24px;position:relative;overflow:hidden}
+:root[data-theme="dark"] .part-head{color:#0e1411}
+.part-head .pn{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:800;opacity:.85}
+.part-head h2{margin:.15em 0 0;font-size:clamp(1.5rem,3.2vw,2rem);font-weight:600}
+.part-intro{margin-top:18px}
+.lesson{margin-top:26px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px 28px 22px;box-shadow:var(--shadow)}
+.l-head{display:flex;gap:14px;align-items:flex-start;padding-bottom:14px;border-bottom:2px solid var(--cs2);margin-bottom:14px}
+.l-code{flex:none;background:var(--c);color:#fff;font-weight:800;border-radius:10px;padding:6px 11px;font-size:1rem}
+:root[data-theme="dark"] .l-code{color:#0e1411}
+.l-head h3{margin:0;font-size:clamp(1.25rem,2.6vw,1.6rem);line-height:1.2;font-weight:600}
+.l-lead{color:var(--muted);margin-top:4px;font-size:.96rem}
+.l-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.pill{font-size:.74rem;font-weight:700;border-radius:99px;padding:3px 10px;background:var(--surface2);color:var(--muted)}
+.pill.done{background:color-mix(in srgb,var(--ok) 16%,var(--surface));color:var(--ok)}
+h4.sub{font-family:"Inter",system-ui,sans-serif;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--c);margin:1.6em 0 .6em;font-weight:800}
+.list{padding-left:1.3em;margin:0 0 1em}
+.list li{margin-bottom:.45em}
+.list li::marker{color:var(--c);font-weight:800}
+.quote{margin:.6em 0 1.2em;border-left:4px solid var(--c);background:var(--cs);border-radius:0 12px 12px 0;padding:14px 18px}
+.quote blockquote{margin:0;font-family:"Fraunces",Georgia,serif;font-style:italic;font-size:1.08rem;line-height:1.5}
+.quote figcaption{font-size:.8rem;color:var(--muted);margin-top:6px}
+.callout{display:flex;gap:12px;border:1px solid var(--line);border-left:5px solid var(--cc);border-radius:12px;padding:13px 16px;margin:1em 0;background:color-mix(in srgb,var(--cc) 7%,var(--surface))}
+.callout .c-ic{flex:none;width:28px;height:28px;border-radius:50%;background:var(--cc);color:#fff;font-weight:800;font-size:.72rem;display:flex;align-items:center;justify-content:center}
+:root[data-theme="dark"] .callout .c-ic{color:#0e1411}
+.callout .c-t{font-weight:800;margin-bottom:3px}
+.callout.key{--cc:var(--green)}.callout.example{--cc:var(--ochre)}.callout.note{--cc:var(--teal)}.callout.warn{--cc:var(--bad)}
+.tbl-wrap{overflow-x:auto;margin:.4em 0 1.1em;border:1px solid var(--line);border-radius:12px}
+.tbl{width:100%;border-collapse:collapse;font-size:.9rem;line-height:1.45;min-width:560px}
+.tbl.c2{min-width:0}
+.tbl th{background:var(--cs2);text-align:left;padding:9px 12px;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase}
+.tbl td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+.tbl tbody tr:hover td{background:var(--cs)}
+.tcap{font-size:.78rem;color:var(--muted);margin:-.6em 0 1em}
+.timeline{list-style:none;margin:.4em 0 1.2em;padding:0;position:relative}
+.timeline::before{content:"";position:absolute;left:96px;top:8px;bottom:8px;width:2px;background:var(--cs2)}
+.tl-item{display:grid;grid-template-columns:84px 1fr;gap:26px;padding:8px 0;position:relative;opacity:0;transform:translateY(8px);transition:opacity .45s,transform .45s}
+.tl-item.in{opacity:1;transform:none}
+.tl-item::before{content:"";position:absolute;left:90px;top:15px;width:14px;height:14px;border-radius:50%;background:var(--surface);border:3px solid var(--c);transition:transform .2s,background .2s}
+.tl-item:hover::before,.tl-item:focus::before{transform:scale(1.25);background:var(--c)}
+.tl-date{font-weight:800;color:var(--c);text-align:right;font-size:.86rem;padding-top:2px}
+.tl-title{font-weight:750}
+.tl-text{font-size:.94rem;color:color-mix(in srgb,var(--ink) 88%,var(--muted))}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:.4em 0 1.2em}
+.card{position:relative;border:1px solid var(--line);border-top:4px solid var(--c);border-radius:12px;padding:12px 14px 14px;background:var(--surface);transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.card-t{font-weight:800;margin-bottom:4px}
+.card-b{font-size:.92rem;transition:filter .2s}
+.compare{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch;margin:.6em 0 1.2em}
+.cmp{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--cs)}
+.cmp-t{font-weight:800;color:var(--c);margin-bottom:4px}
+.cmp-vs{display:flex;align-items:center;font-family:"Fraunces",Georgia,serif;font-style:italic;color:var(--muted)}
+
+/* era explorer */
+.eras{margin:.6em 0 1.2em}
+.era-track{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.era-track button{flex:none;border:1.5px solid var(--line);background:var(--surface2);border-radius:10px;padding:8px 11px;cursor:pointer;font-size:.8rem;font-weight:700;line-height:1.2;text-align:left}
+.era-track button small{display:block;font-weight:600;color:var(--muted);font-size:.7rem}
+.era-track button[aria-selected="true"]{background:var(--c);border-color:var(--c);color:#fff}
+.era-track button[aria-selected="true"] small{color:rgba(255,255,255,.8)}
+.era-track button.today{border-color:var(--ok)}
+.era-panel{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--cs);display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:start;min-height:112px}
+.era-panel .ep-date{grid-row:span 2;font-family:"Fraunces",Georgia,serif;font-size:1.4rem;font-weight:650;color:var(--c);white-space:nowrap}
+.era-panel .ep-title{font-weight:800;font-size:1.05rem}
+.era-nav{display:flex;justify-content:space-between;margin-top:8px}
+.badge{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:99px;padding:2px 8px;margin-left:6px;vertical-align:2px;background:var(--ok);color:#fff}
+.badge.warn{background:var(--bad)}
+
+/* myth or fact */
+.mf{border:1.5px dashed var(--line);border-radius:14px;padding:14px 16px;margin:1em 0}
+.mf .mf-q{font-weight:750;margin-bottom:8px}
+.mf .row{display:flex;gap:8px;flex-wrap:wrap}
+.fb{margin-top:10px;border-radius:10px;padding:10px 12px;font-size:.92rem;display:none}
+.fb.show{display:block}
+.fb.ok{background:color-mix(in srgb,var(--ok) 13%,var(--surface));border:1px solid color-mix(in srgb,var(--ok) 40%,transparent)}
+.fb.bad{background:color-mix(in srgb,var(--bad) 11%,var(--surface));border:1px solid color-mix(in srgb,var(--bad) 40%,transparent)}
+
+/* case digest */
+.case{margin:1.8em 0 1em;border:2px solid var(--c);border-radius:18px;overflow:hidden;background:var(--surface)}
+.case-head{background:var(--cs);padding:16px 20px 14px;border-bottom:1px solid var(--line)}
+.case-label{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--c);display:flex;align-items:center;gap:8px}
+.case-label::before{content:"";width:18px;height:18px;border-radius:5px;background:var(--c);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2 3 6v2h18V6zM5 10v7h2v-7zm6 0v7h2v-7zm6 0v7h2v-7zM3 19v3h18v-3z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2 3 6v2h18V6zM5 10v7h2v-7zm6 0v7h2v-7zm6 0v7h2v-7zM3 19v3h18v-3z'/%3E%3C/svg%3E") center/contain no-repeat}
+.case-title{margin:6px 0 4px;font-size:1.2rem;line-height:1.25;font-weight:600}
+.case-cite{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.84rem;color:var(--muted);font-weight:650;align-items:center}
+.case-cite a{font-weight:750;text-decoration:none}
+.case-conn{margin-top:10px;font-size:.88rem;background:color-mix(in srgb,var(--ochre) 12%,var(--surface));border-radius:10px;padding:8px 12px}
+.case-tabs{display:flex;gap:4px;padding:10px 12px 0;overflow-x:auto;border-bottom:1px solid var(--line)}
+.case-tabs button{flex:none;border:0;background:transparent;padding:8px 12px 10px;font-weight:750;font-size:.86rem;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;display:flex;gap:6px;align-items:center}
+.case-tabs button i{font-style:normal;width:20px;height:20px;border-radius:50%;background:var(--surface2);display:inline-flex;align-items:center;justify-content:center;font-size:.7rem}
+.case-tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--c)}
+.case-tabs button[aria-selected="true"] i,.case-tabs button.seen i{background:var(--c);color:#fff}
+.case-body{padding:16px 20px 6px;min-height:150px}
+.case-panel{display:none;animation:fade .25s}
+.case-panel.on{display:block}
+.case-panel .cp-k{display:none;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--c);margin-bottom:4px}
+.case.full .case-panel{display:block;padding-bottom:12px;margin-bottom:12px;border-bottom:1px dashed var(--line)}
+.case.full .case-panel.p-call{display:none}
+.case.full .case-panel .cp-k{display:block}
+.case.full .case-tabs,.case.full .case-steps{display:none}
+.remember{margin-top:10px;background:var(--cs);border-left:4px solid var(--c);border-radius:0 10px 10px 0;padding:9px 12px;font-size:.93rem}
+.predict-q{font-weight:750;margin-bottom:10px}
+.opt{display:block;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:11px 14px;margin-bottom:8px;cursor:pointer;font-weight:600;transition:border-color .15s,background .15s}
+.opt:hover:not([disabled]){border-color:var(--c);background:var(--cs)}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 12%,var(--surface))}
+.opt.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 10%,var(--surface))}
+.opt[disabled]{cursor:default}
+.case-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 16px 14px;flex-wrap:wrap}
+.case-steps{font-size:.8rem;color:var(--muted);font-weight:650}
+.case-foot .grp{display:flex;gap:6px;flex-wrap:wrap}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+/* quick check */
+.qc{margin-top:18px;border-radius:16px;background:var(--surface2);padding:16px 18px}
+.qc-h{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.qc-h h4{margin:0;font-size:1.05rem}
+.qc-score{font-size:.82rem;font-weight:750;color:var(--muted)}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px}
+.q-t{font-weight:700;margin-bottom:8px}
+.l-end{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.donebtn[aria-pressed="true"]{background:var(--ok);border-color:var(--ok);color:#fff}
+
+/* study lab */
+.lab{margin-top:64px}
+.lab-head{border-radius:18px;background:linear-gradient(120deg,#22392f,#1f5f6b);color:#f6efdd;padding:24px}
+.lab-head h2{margin:.1em 0 .2em;font-size:clamp(1.5rem,3.2vw,2rem)}
+.lab-head p{margin:0;color:#dfe6dc}
+.tools{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
+.tools button{border:1.5px solid var(--line);background:var(--surface);border-radius:14px;padding:14px 12px;cursor:pointer;text-align:left;font-weight:800}
+.tools button span{display:block;font-size:1.4rem;margin-bottom:4px}
+.tools button small{display:block;font-weight:500;color:var(--muted);font-size:.78rem;margin-top:2px}
+.tools button[aria-selected="true"]{border-color:var(--teal);box-shadow:inset 0 0 0 1px var(--teal);background:color-mix(in srgb,var(--teal) 8%,var(--surface))}
+.tool{display:none;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow);--c:var(--teal)}
+.tool.on{display:block;animation:fade .25s}
+.tool h3{margin:0 0 4px;font-size:1.35rem}
+.tool .hint{color:var(--muted);font-size:.9rem;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.chip{border:1.5px solid var(--line);background:var(--surface2);border-radius:99px;padding:5px 12px;font-size:.8rem;font-weight:700;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--c);border-color:var(--c);color:#fff}
+/* flashcards */
+.fc-stage{perspective:1400px;margin:6px 0 12px}
+.fc{position:relative;height:260px;cursor:pointer;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+.fc.flip{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:22px 26px;border:1px solid var(--line)}
+.fc-front{background:linear-gradient(150deg,var(--cs),var(--surface));}
+.fc-front .fc-term{font-family:"Fraunces",Georgia,serif;font-size:clamp(1.4rem,3.4vw,2rem);font-weight:650;line-height:1.2}
+.fc-back{transform:rotateY(180deg);background:var(--surface);font-size:1.05rem}
+.fc-tag{position:absolute;top:12px;left:14px;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--c)}
+.fc-hint{position:absolute;bottom:12px;font-size:.74rem;color:var(--muted)}
+.fc-ctrl{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.fc-ctrl .grp{display:flex;gap:6px;flex-wrap:wrap}
+.fc-count{font-weight:750;color:var(--muted);font-size:.88rem}
+.btn.okb{border-color:var(--ok);color:var(--ok)}
+.btn.badb{border-color:var(--bad);color:var(--bad)}
+/* exam */
+.ex-setup{display:flex;flex-wrap:wrap;gap:12px;align-items:end}
+.ex-setup label{display:flex;flex-direction:column;font-size:.78rem;font-weight:750;color:var(--muted);gap:4px}
+select{font:inherit;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:8px 10px}
+.ex-bar{height:8px;border-radius:99px;background:var(--surface2);overflow:hidden;margin:6px 0 14px}
+.ex-bar i{display:block;height:100%;background:var(--teal);width:0;transition:width .3s}
+.ex-top{display:flex;justify-content:space-between;font-size:.82rem;font-weight:750;color:var(--muted)}
+.ex-q{font-size:1.1rem;font-weight:700;margin:4px 0 12px}
+.result{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+.ring{width:120px;height:120px}
+.ring text{font-family:"Fraunces",Georgia,serif;font-weight:700;fill:var(--ink)}
+.missed{margin-top:14px}
+.missed li{margin-bottom:8px}
+/* duel */
+.duel{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch}
+.duel button.ev{border:2px solid var(--line);background:var(--surface2);border-radius:16px;padding:22px 16px;min-height:130px;cursor:pointer;font-weight:750;font-size:1.02rem;line-height:1.35;transition:transform .12s,border-color .12s}
+.duel button.ev:hover:not([disabled]){transform:translateY(-2px);border-color:var(--teal)}
+.duel button.ev .yr{display:block;font-family:"Fraunces",Georgia,serif;font-size:1.6rem;margin-top:8px;color:var(--teal);visibility:hidden}
+.duel.revealed button.ev .yr{visibility:visible}
+.duel button.ev.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 12%,var(--surface))}
+.duel button.ev.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 10%,var(--surface))}
+.duel .or{display:flex;align-items:center;font-family:"Fraunces",Georgia,serif;font-style:italic;color:var(--muted)}
+.scorebar{display:flex;gap:18px;margin:12px 0;font-weight:750;font-size:.9rem;flex-wrap:wrap}
+.scorebar b{font-size:1.15rem;color:var(--teal)}
+/* matcher */
+.match{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.match h5{margin:0 0 6px;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mi{display:block;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:10px 12px;margin-bottom:7px;cursor:pointer;font-size:.9rem;line-height:1.35}
+.mi.sel{border-color:var(--teal);background:color-mix(in srgb,var(--teal) 10%,var(--surface));box-shadow:inset 0 0 0 1px var(--teal)}
+.mi.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 12%,var(--surface));cursor:default;opacity:.75}
+.mi.no{animation:shake .35s;border-color:var(--bad)}
+.mi .yr{color:var(--muted);font-size:.78rem;font-weight:650}
+@keyframes shake{25%{transform:translateX(-5px)}50%{transform:translateX(5px)}75%{transform:translateX(-3px)}}
+/* takeaways etc */
+.final{margin-top:64px}
+.final h2{font-size:clamp(1.5rem,3.2vw,2rem);margin:0 0 6px}
+.tk{list-style:none;padding:0;margin:0}
+.tk li{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:8px;cursor:pointer;transition:background .15s}
+.tk li .box{width:24px;height:24px;border-radius:7px;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;margin-top:1px}
+.tk li.got{background:color-mix(in srgb,var(--ok) 8%,var(--surface))}
+.tk li.got .box{background:var(--ok);border-color:var(--ok)}
+.tk li.got .box::after{content:"✓"}
+.search{width:100%;font:inherit;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;padding:10px 14px;margin:8px 0 10px}
+.refs ol{padding-left:1.2em;font-size:.9rem}
+.refs li{margin-bottom:6px;overflow-wrap:anywhere}
+.refs h4{font-family:"Inter",system-ui,sans-serif;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:1.4em 0 .4em}
+footer.site{margin-top:50px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:.84rem}
+#tip{position:fixed;z-index:80;max-width:280px;background:var(--ink);color:var(--bg);font-size:.82rem;line-height:1.4;padding:8px 11px;border-radius:10px;pointer-events:none;opacity:0;transform:translateY(4px);transition:opacity .15s,transform .15s}
+#tip.on{opacity:1;transform:none}
+#toTop{position:fixed;right:18px;bottom:18px;z-index:40;opacity:0;pointer-events:none;transition:opacity .2s}
+#toTop.on{opacity:1;pointer-events:auto}
+.scrim{display:none}
+
+@media (max-width:1100px){
+  .layout{grid-template-columns:1fr}
+  #menuBtn{display:inline-flex}
+  .sidebar{position:fixed;left:0;top:0;bottom:0;width:min(300px,86vw);height:100vh;z-index:70;background:var(--bg);transform:translateX(-102%);transition:transform .25s;box-shadow:var(--shadow);padding-top:70px}
+  body.nav-open .sidebar{transform:none}
+  body.nav-open .scrim{display:block;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:65}
+}
+@media (max-width:720px){
+  main{padding:18px 16px 70px}
+  .topbar{padding:8px 12px;gap:8px}
+  .prog-bar{width:60px}
+  .prog span.lbl{display:none}
+  .brand span{font-size:.85rem}
+  .iconbtn .t{display:none}
+  .hero{padding:30px 20px 24px;border-radius:18px}
+  .lesson{padding:18px 16px 16px;border-radius:16px}
+  .seg{grid-template-columns:1fr}
+  .seg-panel{grid-template-columns:1fr}
+  .tools{grid-template-columns:1fr 1fr}
+  .compare{grid-template-columns:1fr}
+  .cmp-vs{justify-content:center}
+  .timeline::before{left:12px}
+  .tl-item{grid-template-columns:1fr;gap:2px;padding-left:34px}
+  .tl-item::before{left:6px}
+  .tl-date{text-align:left}
+  .duel{grid-template-columns:1fr}
+  .duel .or{justify-content:center}
+  .match{grid-template-columns:1fr}
+  .result{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .era-panel{grid-template-columns:1fr}
+  .era-panel .ep-date{grid-row:auto}
+  .fc{height:300px}
+  .case-head{padding:14px 16px 12px}
+  .case-body{padding:14px 16px 4px}
+  .case-foot{flex-direction:column;align-items:stretch;padding:8px 14px 14px}
+  .case-foot .grp{display:grid;grid-template-columns:1fr 1fr}
+  .case-foot .grp [data-full]{grid-column:1/-1}
+  #toTop{right:12px;bottom:12px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.tl-item{opacity:1;transform:none}}
+@media print{.topbar,.sidebar,#toTop,.lab,.qc,.case-tabs,.case-foot{display:none!important}.layout{display:block}.case .case-panel{display:block}.tl-item{opacity:1;transform:none}}
+</style></head>
+<body>
+<div id="readbar"></div>
+<header class="topbar">
+  <button class="iconbtn" id="menuBtn" aria-label="Open contents">☰ <span class="t">Contents</span></button>
+  <a class="brand" href="#top"><svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#22392f"/>
+<path d="M5 22c4-3 7 1 11-2s6-6 11-4" fill="none" stroke="#e3c36f" stroke-width="2" stroke-linecap="round"/>
+<path d="M5 16c4-3 7 1 11-2s6-6 11-4" fill="none" stroke="#9fd3b4" stroke-width="2" stroke-linecap="round" opacity=".8"/>
+<circle cx="22" cy="9" r="2.4" fill="#e3c36f"/></svg><span>Land Governance · PH Reviewer</span></a>
+  <div class="tb-spacer"></div>
+  <div class="prog" title="Topics marked complete"><span class="lbl" id="progTxt">0/9 topics</span><div class="prog-bar"><i id="progBar"></i></div></div>
+  <button class="iconbtn" id="recallBtn" aria-pressed="false" title="Blur key terms, laws and dates to test yourself">🧠 <span class="t">Recall mode</span></button>
+  <button class="iconbtn" id="themeBtn" aria-label="Toggle dark mode">◐ <span class="t">Theme</span></button>
+</header>
+<div class="scrim"></div>
+<div class="layout">
+  <nav class="sidebar" aria-label="Contents"><div class="sb-group"><a href="#top"><span class="code">★</span>Start here</a></div><div class="sb-group acc-green"><div class="sb-h">Part 1 · Land Governance</div><a href="#lg" data-sec="lg"><span class="dot"></span><span><span class="code">1</span> Land Governance</span></a></div><div class="sb-group acc-terracotta"><div class="sb-h">Part 2 · Land Administration in the Philippines</div><a href="#pre" data-sec="pre"><span class="dot"></span><span><span class="code">2.1</span> Pre-colonial Land Administration</span></a><a href="#cw" data-sec="cw"><span class="dot"></span><span><span class="code">2.2</span> Land Administration during the Commonwealth</span></a><a href="#ww2" data-sec="ww2"><span class="dot"></span><span><span class="code">2.3</span> Land Administration after World War II</span></a><a href="#tr" data-sec="tr"><span class="dot"></span><span><span class="code">2.4</span> Land Administration during the Third Republic and the Contemporary Period</span></a></div><div class="sb-group acc-teal"><div class="sb-h">Part 3 · Land Management and Development</div><a href="#lm" data-sec="lm"><span class="dot"></span><span><span class="code">3.1</span> Concept of Land Management in the Philippines</span></a><a href="#ap" data-sec="ap"><span class="dot"></span><span><span class="code">3.2</span> Agricultural Productivity</span></a><a href="#sd" data-sec="sd"><span class="dot"></span><span><span class="code">3.3</span> Settlement Development</span></a><a href="#pr" data-sec="pr"><span class="dot"></span><span><span class="code">3.4</span> Proclamations and Reserve Areas</span></a></div><div class="sb-group acc-teal"><div class="sb-h">Review</div><a href="#lab"><span class="code">⚡</span>Study Lab</a><a href="#takeaways"><span class="code">✓</span>Key Takeaways</a><a href="#refs"><span class="code">§</span>References</a></div></nav>
+  <main><div class="wrap">
+<section class="hero" id="top"><svg class="contour" viewBox="0 0 800 400" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="#e8d9a8" stroke-width="1.2">
+<path d="M-20 330 C 110 270 200 350 340 300 S 570 200 820 270"/><path d="M-20 290 C 120 230 210 310 350 260 S 590 160 820 230"/>
+<path d="M-20 250 C 130 190 220 270 360 220 S 600 120 820 190"/><path d="M-20 210 C 140 150 230 230 370 180 S 610 80 820 150"/>
+<path d="M-20 170 C 150 110 240 190 380 140 S 620 40 820 110"/><path d="M-20 130 C 160 70 250 150 390 100 S 630 0 820 70"/>
+<path d="M520 400 C 545 335 630 320 690 345 S 800 400 820 390"/><path d="M548 400 C 572 350 640 342 690 362"/>
+<circle cx="660" cy="120" r="34"/><circle cx="660" cy="120" r="20"/><circle cx="660" cy="120" r="8"/></g></svg>
+  <div class="eyebrow">Interactive Study Guide · Philippine Land Law &amp; Policy</div>
+  <h1>Land Governance, Administration, and Management in the Philippines</h1>
+  <p class="lede">Learn it, test it, remember it: clear lessons, step-by-step Supreme Court case digests, quick checks, flashcards, and games.</p>
+  <div class="stats"><span class="stat"><b>9</b> topics</span><span class="stat"><b>10</b> case digests</span><span class="stat"><b>52</b> practice questions</span><span class="stat"><b>45</b> flashcards</span><span class="stat">Cases studied: <b id="casesStat">0/10</b></span></div>
+  <div class="hero-cta"><a class="btn" href="#lg">Start with Part 1 →</a><a class="btn ghost" href="#lab">Jump to the Study Lab</a></div>
+</section>
+<div class="three acc-green">
+  <h2>Three lessons, one system</h2>
+  <div class="hint">Tap each one to see how they differ. (Exams love this distinction.)</div>
+  <div class="seg" id="seg" role="tablist"></div>
+  <div class="seg-panel" id="segPanel" aria-live="polite"></div>
+</div>
+<div class="lesson acc-green" style="margin-top:16px"><aside class="callout key"><div class="c-ic" aria-hidden="true">★</div><div><div class="c-t">The bedrock: the Regalian Doctrine</div><div class="c-b">Under <span class="law">Art. XII, Sec. 2, 1987 Constitution</span>, <b>all lands of the public domain and natural resources are owned by the State</b>. Land not clearly shown to be private is presumed public, so anyone claiming private ownership must prove it. The State has a <b>dual mandate</b>: it <b>alienates</b> (classifies and distributes) lands fit for private use, and it <b>manages</b> and keeps the rest (forests, minerals, national parks) for the nation. The main exception is <b>native title</b>: land held by indigenous communities since time immemorial is presumed never to have been public land.</div></div></aside>
+<p>Each topic ends with a <b>case digest</b> in five parts: Title and Citation, Facts, Issue, Ruling, and Relevance. Every case was checked against the full decision on Lawphil (links in the References).</p>
+  <div class="callout note"><div class="c-ic">?</div><div><div class="c-t">How to use this guide</div><div class="c-b">Read each topic, then work through its <b>case digest</b> step by step. Make your own call before you see the ruling. Answer the <b>quick check</b> and mark the topic complete; your progress is saved in this browser. Turn on <b>Recall mode</b> (top bar) to blur key terms, laws, and dates, then tap each one to test yourself. Underlined key terms show a definition on hover.</div></div></div>
+</div>
+<section class="part acc-green" id="p1">
+  <div class="part-head"><div class="pn">Part 1</div><h2>Land Governance</h2></div>
+  
+  
+<section class="lesson acc-green" id="lg">
+  <div class="l-head"><div class="l-code">1</div><div>
+    <h3>Land Governance</h3><div class="l-lead">The rules, processes, and institutions that decide who gets land, how it is used, and how conflicts over it are settled.</div>
+    <div class="l-meta"><span class="pill">⏱ ~5 min read</span><span class="pill">⚖ 1 case digest</span><span class="pill" data-state="lg">Not yet completed</span></div>
+  </div></div>
+  <h4 class="sub">Meaning and concept</h4>
+<figure class="quote"><blockquote>Land governance concerns the rules, processes and structures through which decisions are made about access to land and its use, the manner in which the decisions are implemented and enforced, and the way that competing interests in land are managed.</blockquote><figcaption>FAO, Towards Improved Land Governance (2009)</figcaption></figure>
+<p>Put simply, land governance is <b>“the rules of the game and the referees.”</b> In the Philippines, those rules start with the 1987 Constitution:</p>
+<ul class="list"><li><b class="k">Regalian Doctrine</b>: the State owns public lands and natural resources (<span class="law">Art. XII, Sec. 2</span>).</li><li><b class="k">Four classes of public land</b>: agricultural, forest or timber, mineral, and national parks. Only agricultural lands may be alienated (<span class="law">Art. XII, Sec. 3</span>).</li><li><b class="k">Ownership limits</b>: citizens may acquire up to <b>12 ha</b> (by purchase, homestead, or grant) or lease up to <b>500 ha</b>. Private corporations may only <b>lease</b>, up to <b>1,000 ha</b>, for 25 years renewable for another 25 (<span class="law">Art. XII, Sec. 3</span>). Aliens cannot acquire private land except by hereditary succession (<span class="law">Art. XII, Sec. 7</span>).</li><li><b class="k">Social function of property</b> (<span class="law">Art. XII, Sec. 6</span>) and <b class="k">social justice</b>: agrarian reform (<span class="law">Art. XIII, Sec. 4</span>) and urban land reform and housing (<span class="law">Art. XIII, Sec. 9</span>).</li><li><b class="k">Indigenous peoples' rights</b> to ancestral lands (<span class="law">Art. XII, Sec. 5</span>), implemented by <span class="law">IPRA, RA 8371 (1997)</span>.</li><li><b class="k">Decentralization</b>: LGUs plan and zone land (<span class="law">Art. X</span>; <span class="law">Local Government Code, RA 7160 (1991)</span>).</li></ul>
+<h4 class="sub">Importance</h4>
+<div class="cards"><div class="card" tabindex="0"><div class="card-t">Tenure security</div><div class="card-b">Clear rights encourage investment. A title can also serve as collateral for credit.</div></div><div class="card" tabindex="0"><div class="card-t">Fewer conflicts</div><div class="card-b">Clear boundaries and records prevent overlapping claims and violent disputes.</div></div><div class="card" tabindex="0"><div class="card-t">Equity</div><div class="card-b">Gives the landless, farmers, and indigenous peoples fair access to land.</div></div><div class="card" tabindex="0"><div class="card-t">Environment</div><div class="card-b">Protects forests, watersheds, and coasts that belong to the whole nation.</div></div><div class="card" tabindex="0"><div class="card-t">Revenue and planning</div><div class="card-b">Good land records support real property tax collection and sound land-use planning.</div></div><div class="card" tabindex="0"><div class="card-t">Peace and democracy</div><div class="card-b">Disputes over land and resources are a root cause of rural unrest, as the Huk rebellion showed.</div></div></div>
+<aside class="callout example"><div class="c-ic" aria-hidden="true">PH</div><div><div class="c-t">Philippine reality</div><div class="c-b">The class reference material (citing <span class="ag">LAMP</span> data, 2004) states that about <b>60% of real property</b> is held without legal titles, and millions of A&D parcels remain untitled. Mandates also overlap: <span class="ag">DENR</span> classifies, <span class="ag">DENR</span> or the courts title, <span class="ag">LRA</span> registers, <span class="ag">DAR</span> handles agrarian land, and <span class="ag">NCIP</span> handles ancestral land. Untitled land is “dead capital” that cannot easily be sold, mortgaged, or developed.</div></div></aside>
+<h4 class="sub">Objectives</h4>
+<ol class="list"><li>Secure and clear property rights (<b class="k">tenure security</b>).</li><li>Fair access to land, especially for the poor (<b class="k">social justice</b>).</li><li>Efficient, transparent, and affordable land services (titling, registration, surveys).</li><li>Sustainable use and protection of the public domain.</li><li>Fair and fast resolution of land disputes.</li><li>Integrated, reliable land information: one map, one record.</li></ol>
+<h4 class="sub">Major principles of good land governance</h4>
+<div class="tbl-wrap"><table class="tbl c3"><thead><tr><th>Principle</th><th>What it means</th><th>Philippine anchor</th></tr></thead><tbody><tr><td><b class="k">Rule of law</b></td><td>Land decisions must follow the Constitution and laws.</td><td><i>Chavez v. PEA</i> voided a contract that violated Art. XII.</td></tr><tr><td><b class="k">Transparency</b></td><td>The public can see how land deals are made.</td><td>Right to information, <span class="law">Art. III, Sec. 7</span>.</td></tr><tr><td><b class="k">Accountability</b></td><td>Officials answer for how they handle public land.</td><td>COA audits, Ombudsman, and the courts.</td></tr><tr><td><b class="k">Equity and social justice</b></td><td>Land access favors those who need it most.</td><td><span class="law">CARP</span>, <span class="law">UDHA</span>, <span class="law">IPRA</span></td></tr><tr><td><b class="k">Participation</b></td><td>Affected people are consulted.</td><td>Public hearings for the CLUP; Free, Prior and Informed Consent (FPIC) under IPRA.</td></tr><tr><td><b class="k">Sustainability and stewardship</b></td><td>Land is used without destroying it for future generations.</td><td><i>Oposa v. Factoran</i>; <span class="law">NIPAS</span></td></tr><tr><td><b class="k">Security of tenure</b></td><td>Recorded rights are protected and guaranteed.</td><td>Torrens title under <span class="law">PD 1529</span></td></tr><tr><td><b class="k">Subsidiarity</b></td><td>Decisions are made at the level closest to the people.</td><td>LGU zoning under <span class="law">RA 7160</span></td></tr></tbody></table></div>
+<h4 class="sub">Roles of government institutions</h4>
+<div class="tbl-wrap"><table class="tbl c3"><thead><tr><th>Institution</th><th>Main land role</th><th>Legal basis</th></tr></thead><tbody><tr><td><span class="ag">DENR</span>: <span class="ag">LMB</span>, <span class="ag">FMB</span>, <span class="ag">MGB</span>, <span class="ag">BMB</span>, CENRO/PENRO</td><td>Classifies public lands; approves surveys; issues free, homestead, and sales patents; manages forests, minerals, and protected areas</td><td><span class="law">EO 192 (1987)</span>, <span class="law">CA 141</span>, <span class="law">PD 705</span></td></tr><tr><td><span class="ag">NAMRIA</span> (attached to DENR)</td><td>National mapping and geodetic control (the Philippine Reference System of 1992)</td><td><span class="law">EO 192 (1987)</span></td></tr><tr><td><span class="ag">LRA</span> and the <span class="ag">Registries of Deeds</span></td><td>Torrens registration; issues and records OCTs and TCTs</td><td><span class="law">PD 1529</span>, <span class="law">EO 292 (1987)</span></td></tr><tr><td><span class="ag">DAR</span> and <span class="ag">DARAB</span></td><td>Agrarian reform: land acquisition and distribution, CLOAs, approval of land-use conversion, agrarian disputes</td><td><span class="law">RA 6657</span>, <span class="law">RA 9700</span>, <span class="law">EO 129-A</span></td></tr><tr><td><span class="ag">NCIP</span></td><td>Recognizes ancestral domains and lands (CADT/CALT); oversees FPIC</td><td><span class="law">RA 8371</span></td></tr><tr><td><span class="ag">DHSUD</span> (formerly HLURB and HUDCC)</td><td>Housing, human settlements, land-use planning guidelines, subdivision regulation</td><td><span class="law">RA 11201 (2019)</span></td></tr><tr><td><span class="ag">LGUs</span></td><td>CLUP and zoning; reclassification of agricultural land; real property assessment and tax</td><td><span class="law">RA 7160</span></td></tr><tr><td><span class="ag">DA</span> (including <span class="ag">BSWM</span>)</td><td>Soil and land suitability; protection of strategic agricultural zones</td><td><span class="law">RA 8435 (AFMA)</span></td></tr><tr><td>Courts</td><td>Land registration cases, judicial confirmation of title, disputes; the Supreme Court is the final interpreter</td><td><span class="law">PD 1529</span>; <span class="law">1987 Constitution, Art. VIII</span></td></tr></tbody></table></div>
+  <div class="mf-slot" data-m="lg"></div>
+  <div class="case-slot" data-case="chavez" data-topic="Land Governance"></div>
+  <div class="qc" data-sec="lg"></div>
+  <div class="l-end"><button class="btn small donebtn" data-sec="lg" aria-pressed="false">Mark topic as complete</button><a class="btn small" href="#pre">Next: 2.1 Pre-colonial Land Administration →</a></div>
+</section>
+</section>
+<section class="part acc-terracotta" id="p2">
+  <div class="part-head"><div class="pn">Part 2</div><h2>Land Administration in the Philippines</h2></div>
+  <div class="part-intro lesson"><p><b>Land administration</b> is “the process of determining, recording and disseminating information about the ownership, value and use of land when implementing land management policies” (UNECE, 1996). It has four functions: <b>land tenure, land value, land use, and land development</b> (Williamson et al., 2010). The Philippine system grew in layers, and each era added something that is still in use today.</p>
+<ol class="timeline" data-tl="eras"><li class="tl-item" tabindex="0"><div class="tl-date">Before 1565</div><div class="tl-body"><div class="tl-title">Pre-colonial</div><div class="tl-text">Customary, communal, and unwritten rights under barangays and sultanates.</div></div></li><li class="tl-item" tabindex="0"><div class="tl-date">1565–1898</div><div class="tl-body"><div class="tl-title">Spanish period</div><div class="tl-text">The <b>Regalian Doctrine</b> arrived: all lands belonged to the Crown. Haciendas and friar lands formed. The <span class="law">Maura Law (1894)</span> was the last chance to register Spanish titles.</div></div></li><li class="tl-item" tabindex="0"><div class="tl-date">1898–1935</div><div class="tl-body"><div class="tl-title">American period</div><div class="tl-text">The Torrens system (<span class="law">Act 496, 1902</span>), the first Public Land Act (<span class="law">Act 926, 1903</span>), the Cadastral Act (<span class="law">Act 2259, 1913</span>), <span class="law">Act 2874 (1919)</span>, and the Friar Lands Act (<span class="law">Act 1120, 1904</span>).</div></div></li><li class="tl-item" tabindex="0"><div class="tl-date">1935–1946</div><div class="tl-body"><div class="tl-title">Commonwealth</div><div class="tl-text">The 1935 Constitution, <span class="law">CA 141 (1936)</span>, social justice programs, and organized settlement.</div></div></li><li class="tl-item" tabindex="0"><div class="tl-date">1945–early 1950s</div><div class="tl-body"><div class="tl-title">After World War II</div><div class="tl-text">Rebuilding lost records, independence, agrarian unrest, and the first resettlement programs.</div></div></li><li class="tl-item" tabindex="0"><div class="tl-date">1946–1972</div><div class="tl-body"><div class="tl-title">Third Republic</div><div class="tl-text">Institutional land reform: NARRA, the LTA, and RA 3844; the creation of DAR.</div></div></li><li class="tl-item" tabindex="0"><div class="tl-date">1972–1986</div><div class="tl-body"><div class="tl-title">Martial Law / Fourth Republic</div><div class="tl-text"><span class="law">PD 27</span>, <span class="law">PD 705</span>, and <span class="law">PD 1529</span> under the 1973 Constitution.</div></div></li><li class="tl-item" tabindex="0"><div class="tl-date">1987–present</div><div class="tl-body"><div class="tl-title">Fifth Republic (today)</div><div class="tl-text">The 1987 Constitution, CARP, the LGC, IPRA, DHSUD, and digital titling.</div></div></li></ol>
+<aside class="callout warn"><div class="c-ic" aria-hidden="true">!</div><div><div class="c-t">Get the timeline right: the Third Republic is NOT the present</div><div class="c-b">The <b>Third Republic</b> began on <span class="dt">July 4, 1946</span> with independence. It effectively ended when <b>Martial Law</b> was declared in <span class="dt">September 1972</span> (<span class="law">Proclamation No. 1081</span>); the 1973 Constitution formally replaced the 1935 Constitution on <span class="dt">January 17, 1973</span>. Today the Philippines is in the <b>Fifth Republic</b>, under the <span class="dt">1987</span> Constitution. Historians differ on when the Fourth Republic began (1973 or 1981). Some course outlines label the last lesson “current times (Third Republic)” because much of today's system, including CA 141, the Torrens system, and land reform agencies, was built or reshaped during the Third Republic. This reviewer therefore treats it as <b>“Third Republic and Contemporary Period.”</b></div></div></aside><div class="mf-slot" data-m="p2"></div></div>
+  
+<section class="lesson acc-terracotta" id="pre">
+  <div class="l-head"><div class="l-code">2.1</div><div>
+    <h3>Pre-colonial Land Administration</h3><div class="l-lead">Before Spain, Filipinos managed land through custom, community, and kinship. There were no titles, but rights were real and recognized.</div>
+    <div class="l-meta"><span class="pill">⏱ ~2 min read</span><span class="pill">⚖ 1 case digest</span><span class="pill" data-state="pre">Not yet completed</span></div>
+  </div></div>
+  <p>Pre-colonial land administration means the <b>customary ways</b> communities recognized, used, and managed land before Spanish colonization (Scott, 1994). It was not the modern system of titles and surveys, and practices differed from one community to another.</p>
+<h4 class="sub">Significant characteristics</h4>
+<div class="cards"><div class="card" tabindex="0"><div class="card-t">Customary and unwritten</div><div class="card-b">Rights came from tradition, use, occupation, and inheritance. There were no registries, and boundaries were rivers, trees, ridges, and community memory.</div></div><div class="card" tabindex="0"><div class="card-t">Barangay-based</div><div class="card-b">The <b>barangay</b> was the basic political unit. The <b>datu</b> allocated land use, settled disputes, and protected shared resources.</div></div><div class="card" tabindex="0"><div class="card-t">Communal ownership</div><div class="card-b">Forests, hunting grounds, rivers, and fishing grounds were shared. Land was seen as a gift from the gods or ancestors, so people were <b>stewards</b> rather than absolute owners.</div></div><div class="card" tabindex="0"><div class="card-t">Usufruct</div><div class="card-b">Families held the right to <b>cultivate and harvest</b> assigned plots, while the community kept ultimate control. Abandoned land could revert to the community.</div></div><div class="card" tabindex="0"><div class="card-t">Social classes shaped access</div><div class="card-b">Datu, maharlika (Tagalog nobles; timawa in the Visayas), aliping namamahay (dependents with their own houses and property), and aliping saguiguilid (household dependents with fewer rights). Accounts include Plasencia's <i>Customs of the Tagalogs</i> (1589).</div></div><div class="card" tabindex="0"><div class="card-t">Locally diverse</div><div class="card-b">Lowland, upland (for example Ifugao and Kalinga), and Muslim communities differed. In Mindanao and Sulu, <b>sultanates</b> governed land through custom (<i>adat</i>) and Islamic law.</div></div></div>
+<aside class="callout example"><div class="c-ic" aria-hidden="true">PH</div><div><div class="c-t">Living example</div><div class="c-b">In the <b>Ifugao rice terraces</b>, families inherit terraces, while clan woodlots called <i>muyong</i> protect the watershed above them. This customary land management has lasted for centuries.</div></div></aside>
+<h4 class="sub">Why it still matters (changes and legacy)</h4>
+<ul class="list"><li>Spain's <b>Regalian Doctrine</b> treated these customary lands as Crown property, which began centuries of indigenous dispossession.</li><li><b>Native title</b>: in <i>Cariño v. Insular Government</i>, 212 U.S. 449 <span class="dt">1909</span>, the <b>U.S. Supreme Court</b> (on appeal from the Philippines) held that land held since time immemorial under a claim of private ownership is presumed <b>never to have been public land</b>.</li><li><span class="law">IPRA (RA 8371, 1997)</span> recognizes <b>ancestral domains</b>, customary law, and native title. <span class="ag">NCIP</span> issues <b>CADTs</b> (Certificates of Ancestral Domain Title) and <b>CALTs</b> (Certificates of Ancestral Land Title).</li></ul>
+  <div class="mf-slot" data-m="pre"></div>
+  <div class="case-slot" data-case="cruz" data-topic="Pre-colonial Land Administration"></div>
+  <div class="qc" data-sec="pre"></div>
+  <div class="l-end"><button class="btn small donebtn" data-sec="pre" aria-pressed="false">Mark topic as complete</button><a class="btn small" href="#cw">Next: 2.2 Land Administration during the Commonwealth →</a></div>
+</section>
+<section class="lesson acc-terracotta" id="cw">
+  <div class="l-head"><div class="l-code">2.2</div><div>
+    <h3>Land Administration during the Commonwealth (1935–1946)</h3><div class="l-lead">A transition government under the 1935 Constitution built the Public Land Act, nationalized land ownership, and began social-justice land programs.</div>
+    <div class="l-meta"><span class="pill">⏱ ~4 min read</span><span class="pill">⚖ 1 case digest</span><span class="pill" data-state="cw">Not yet completed</span></div>
+  </div></div>
+  <p>The <span class="law">Tydings–McDuffie Act (1934)</span> set a 10-year transition to independence. The Commonwealth was inaugurated on <span class="dt">November 15, 1935</span> under <b>President Manuel L. Quezon</b>. Japanese occupation (1942–1945) later interrupted its programs.</p>
+<h4 class="sub">1. Constitutional foundation: the 1935 Constitution, Art. XIII</h4>
+<ul class="list"><li><b>Regalian Doctrine and nationalization</b>: public lands and natural resources belong to the State. Their use is limited to Filipinos or corporations at least <b>60% Filipino-owned</b>, and only <b>agricultural</b> public land may be alienated (Sec. 1).</li><li><b>Area limits</b> (Sec. 2): corporations up to <b>1,024 ha</b>; individuals up to <b>144 ha</b> by purchase, <b>1,024 ha</b> by lease, and <b>24 ha</b> by homestead; grazing leases up to <b>2,000 ha</b>.</li><li><b>Expropriation for social justice</b> (Sec. 4): Congress may authorize the expropriation of lands to be subdivided into small lots and sold at cost to individuals.</li><li><b>Filipinos only</b> (Sec. 5): private agricultural land may be transferred only to those qualified to acquire public land. This became the basis of <i>Krivenko</i>.</li></ul>
+<h4 class="sub">2. The Public Land Act: CA 141 (November 7, 1936)</h4>
+<p><span class="law">Commonwealth Act No. 141</span> is <b>still the main public land law today</b>, as amended. It provides that:</p>
+<ul class="list"><li>The <b>President</b>, on the Secretary's recommendation, classifies public land as <b>alienable or disposable, timber, or mineral</b> (Sec. 6). A&D land is further classified by use (Sec. 9): agricultural; residential, commercial, or industrial; educational or charitable; and reservations for town sites and public uses.</li><li><b>Modes of disposition</b>: homestead, sale, lease, and confirmation of imperfect or incomplete titles (judicial or by free patent).</li><li><b>Homestead</b> (Sec. 12): a citizen over 18 or the head of a family may enter up to <b>24 ha</b> and must occupy and cultivate it. Homestead and free patent land cannot be sold or encumbered for <b>5 years</b> after the patent is issued (Sec. 118).</li><li><b>Judicial confirmation</b> (Sec. 48(b)) originally required possession since <span class="dt">July 26, 1894</span>. This was later changed to 30 years (<span class="law">RA 1942</span>), then to June 12, 1945 (<span class="law">PD 1073</span>), and is now 20 years (<span class="law">RA 11573</span>).</li><li><b>Reservations</b> (Secs. 83–88): the President may reserve land by proclamation (see Topic 3.4).</li><li><b>Special protection</b> for lands of “non-Christian” Filipinos: their land transfers needed government approval (Secs. 120–121). This was protective but paternalistic.</li></ul>
+<h4 class="sub">3. Institutions and programs</h4>
+<div class="tbl-wrap"><table class="tbl c2"><thead><tr><th>Law or body</th><th>What it did</th></tr></thead><tbody><tr><td><span class="ag">Bureau of Lands</span></td><td>Main administrator: land classification, cadastral surveys, disposition of public land, and land records (under the Director of Lands).</td></tr><tr><td><span class="law">CA 20 (1936)</span></td><td>Allowed the President to acquire portions of large landed estates used as home sites and resell them at cost to bona fide occupants.</td></tr><tr><td><span class="law">EO 191 (1939)</span>: <span class="ag">Rural Progress Administration</span></td><td>Created to promote small landownership. It acquired, leased, and resold landed estates to tenants.</td></tr><tr><td><span class="law">CA 539 (1940)</span></td><td>Authorized the President, through the RPA, to buy or expropriate private lands for resale in small lots. This law was tested in <i>Guido</i>.</td></tr><tr><td><span class="law">Act 4197 (1935)</span>, Quirino–Recto Colonization Act</td><td>Organized settlement of public agricultural land, especially in Mindanao.</td></tr><tr><td><span class="law">CA 441 (1939)</span>: <span class="ag">NLSA</span></td><td>The National Land Settlement Administration, led by Gen. <b>Paulino Santos</b>, settled families in the <b>Koronadal and Allah Valleys</b>. This is the origin of today's General Santos City and Koronadal.</td></tr><tr><td><span class="law">CA 137 (1936)</span>, Mining Act</td><td>Governed mineral lands, mining claims, and leases.</td></tr></tbody></table></div>
+<aside class="callout note"><div class="c-ic" aria-hidden="true">i</div><div><div class="c-t">Wartime disruption (1942–1945)</div><div class="c-b">The occupation halted settlement and land reform programs, weakened tenant protections, and <b>destroyed many titles, cadastral maps, and court records</b>. This set the agenda for the post-war period.</div></div></aside>
+  <div class="mf-slot" data-m="cw"></div>
+  <div class="case-slot" data-case="guido" data-topic="Land Administration during the Commonwealth"></div>
+  <div class="qc" data-sec="cw"></div>
+  <div class="l-end"><button class="btn small donebtn" data-sec="cw" aria-pressed="false">Mark topic as complete</button><a class="btn small" href="#ww2">Next: 2.3 Land Administration after World War II →</a></div>
+</section>
+<section class="lesson acc-terracotta" id="ww2">
+  <div class="l-head"><div class="l-code">2.3</div><div>
+    <h3>Land Administration after World War II (1945 – early 1950s)</h3><div class="l-lead">Rebuild the records, restore order, and respond to rural unrest.</div>
+    <div class="l-meta"><span class="pill">⏱ ~2 min read</span><span class="pill">⚖ 1 case digest</span><span class="pill" data-state="ww2">Not yet completed</span></div>
+  </div></div>
+  <h4 class="sub">Significant characteristics</h4>
+<ol class="timeline" data-tl="postwar"><li class="tl-item" tabindex="0"><div class="tl-date">1945</div><div class="tl-body"><div class="tl-title">Records in ruins</div><div class="tl-text">Titles, cadastral maps, survey plans, and court records were lost or destroyed, especially in the Battle of Manila. Boundaries and ownership had to be rebuilt.</div></div></li><li class="tl-item" tabindex="0"><div class="tl-date">1946</div><div class="tl-body"><div class="tl-title">Independence and reconstitution</div><div class="tl-text">The Republic was born on <span class="dt">July 4, 1946</span>. <span class="law">RA 26 (Sept. 25, 1946)</span> set a special procedure to <b>reconstitute lost or destroyed Torrens titles</b> from sources such as the owner's duplicate or certified copies.</div></div></li><li class="tl-item" tabindex="0"><div class="tl-date">1946</div><div class="tl-body"><div class="tl-title">RA 34: the 70–30 sharing law</div><div class="tl-text"><span class="law">RA 34 (Sept. 30, 1946)</span>, under President Roxas, amended the Rice Share Tenancy Act. It gave tenants <b>70% of the harvest</b> when they supplied the labor, work animals, and implements.</div></div></li><li class="tl-item" tabindex="0"><div class="tl-date">1946–1947</div><div class="tl-body"><div class="tl-title">Parity rights</div><div class="tl-text">The <span class="law">Bell Trade Act</span> and the <b>Parity Amendment</b> (ratified <span class="dt">1947</span>) gave U.S. citizens equal rights to exploit Philippine natural resources until 1974. This was a controversial exception to nationalization.</div></div></li><li class="tl-item" tabindex="0"><div class="tl-date">1946–1950s</div><div class="tl-body"><div class="tl-title">Hukbalahap unrest</div><div class="tl-text">Landlessness, unfair tenancy, and debt in <b>Central Luzon</b> fueled the Huk rebellion. Land became a national-security issue.</div></div></li><li class="tl-item" tabindex="0"><div class="tl-date">1950</div><div class="tl-body"><div class="tl-title">Quirino's resettlement agencies</div><div class="tl-text"><span class="law">EO 355</span> replaced the NLSA with <span class="ag">LASEDECO</span> (Land Settlement and Development Corporation). <span class="ag">EDCOR</span> (Economic Development Corps, Dec. 1950), under Defense Secretary <b>Ramon Magsaysay</b>, resettled surrendered Huks in <b>Kapatagan (Lanao) and Buldon (Cotabato)</b>. <span class="law">EO 376 (1950)</span> abolished the RPA and transferred its functions to the <span class="ag">Bureau of Lands</span>.</div></div></li></ol>
+<aside class="callout key"><div class="c-ic" aria-hidden="true">★</div><div><div class="c-t">What changed</div><div class="c-b">Land administration shifted from <b>building</b> systems to <b>rebuilding</b> them (reconstitution and resurveys). Land policy became tied to <b>peace and order</b>: resettlement was used both as land reform and as counter-insurgency. Mindanao became the main settlement frontier, which later caused conflicts with Moro and Lumad communities whose customary rights were not recognized.</div></div></aside>
+  <div class="mf-slot" data-m="ww2"></div>
+  <div class="case-slot" data-case="krivenko" data-topic="Land Administration after World War II"></div>
+  <div class="qc" data-sec="ww2"></div>
+  <div class="l-end"><button class="btn small donebtn" data-sec="ww2" aria-pressed="false">Mark topic as complete</button><a class="btn small" href="#tr">Next: 2.4 Land Administration during the Third Republic and the Contemporary Period →</a></div>
+</section>
+<section class="lesson acc-terracotta" id="tr">
+  <div class="l-head"><div class="l-code">2.4</div><div>
+    <h3>Land Administration during the Third Republic and the Contemporary Period</h3><div class="l-lead">From land reform institutions (1946–1972) to martial-law decrees and today's Fifth Republic system.</div>
+    <div class="l-meta"><span class="pill">⏱ ~5 min read</span><span class="pill">⚖ 2 case digests</span><span class="pill" data-state="tr">Not yet completed</span></div>
+  </div></div>
+  <h4 class="sub">A. The Third Republic (1946–1972): building land-reform institutions</h4>
+<p>Presidents: Roxas, Quirino, <b>Magsaysay</b> (1953–57), Garcia, <b>Macapagal</b> (1961–65), and Marcos (1965–72). The 1935 Constitution remained in force.</p>
+<div class="tbl-wrap"><table class="tbl c3"><thead><tr><th>Year</th><th>Law or agency</th><th>Significance</th></tr></thead><tbody><tr><td>1954</td><td><span class="law">RA 1151</span>: <span class="ag">Land Registration Commission</span></td><td>Supervised the Registers of Deeds and served as the central repository of registration records.</td></tr><tr><td>1954</td><td><span class="law">RA 1160</span>: <span class="ag">NARRA</span></td><td>Replaced LASEDECO. Resettled landless farmers, distributed public agricultural land, and developed townsites, especially in Mindanao and Palawan.</td></tr><tr><td>1954</td><td><span class="law">RA 1199</span>, Agricultural Tenancy Act</td><td>Regulated share and leasehold tenancy and gave tenants security of tenure.</td></tr><tr><td>1955</td><td><span class="law">RA 1400</span>, Land Reform Act: <span class="ag">LTA</span></td><td>The Land Tenure Administration could expropriate estates above <b>300 ha</b> (individuals) or <b>600 ha</b> (corporations), or any estate with justified agrarian unrest, for resale as family-size farms.</td></tr><tr><td>1957</td><td><span class="law">RA 1942</span></td><td>Amended CA 141 Sec. 48(b): 30 years of possession for judicial confirmation.</td></tr><tr><td>1963</td><td><span class="law">RA 3844</span>, Agricultural Land Reform Code</td><td><b>Abolished share tenancy</b> in favor of leasehold, created the <span class="ag">Land Bank</span> and <span class="ag">Land Authority</span>, set a 75-ha retention limit, and required land capability surveys and classification.</td></tr><tr><td>1965</td><td><span class="law">RA 4374</span></td><td>Regulated the practice of <b>geodetic engineering</b> (later replaced by <span class="law">RA 8560, 1998</span>).</td></tr><tr><td>1971</td><td><span class="law">RA 6389</span>, Code of Agrarian Reforms</td><td>Created the <span class="ag">Department of Agrarian Reform (DAR)</span> and automatically converted share tenancy to leasehold.</td></tr></tbody></table></div>
+<aside class="callout note"><div class="c-ic" aria-hidden="true">i</div><div><div class="c-t">Persistent problems</div><div class="c-b">Incomplete cadastral surveys, informal occupation before classification, overlapping claims, slow titling, fragmented agencies, landlord resistance, and underfunded reforms.</div></div></aside>
+<h4 class="sub">B. Martial Law and the Fourth Republic (1972–1986)</h4>
+<ul class="list"><li><span class="law">PD 2 (1972)</span> declared the whole country a land reform area. <span class="law">PD 27 (Oct. 21, 1972)</span> began <b>Operation Land Transfer</b> for rice and corn lands. Tenants could own up to 3 ha (irrigated) or 5 ha (unirrigated); landowners kept 7 ha. Tenants received a Certificate of Land Transfer (CLT), then an Emancipation Patent (EP).</li><li><span class="law">PD 705 (1975)</span>, Revised Forestry Code: land at <b>18% slope or more</b> cannot be classified A&D, and unclassified land is treated as public forest.</li><li><span class="law">PD 1073 (1977)</span>: judicial confirmation requires possession since <b>June 12, 1945</b>.</li><li><span class="law">PD 1529 (1978)</span>, <b>Property Registration Decree</b>: codified the Torrens system. The LRC became the NALTDRA, later renamed the <span class="ag">LRA</span>.</li></ul>
+<h4 class="sub">C. The Fifth Republic, the contemporary period (1987–present)</h4>
+<div class="tbl-wrap"><table class="tbl c2"><thead><tr><th>Year</th><th>Development</th></tr></thead><tbody><tr><td>1987</td><td><b>1987 Constitution</b>: four land classes, the 12-ha and 500-ha limits, agrarian and urban land reform, and IP rights. <span class="law">EO 192</span> reorganized the <span class="ag">DENR</span> (LMB, NAMRIA). <span class="law">EO 229</span> and <span class="law">Proc. 131</span> framed CARP. <span class="law">EO 292</span> renamed the registration agency the <span class="ag">LRA</span>.</td></tr><tr><td>1988</td><td><span class="law">RA 6657</span>, <b>CARL</b> (effective <span class="dt">June 15, 1988</span>): covers all agricultural lands regardless of crop; 5-ha retention (plus 3 ha per qualified child); CLOAs issued to beneficiaries.</td></tr><tr><td>1991–1992</td><td><span class="law">RA 7160</span> (LGC): CLUP, zoning, reclassification. <span class="law">RA 7279</span> (UDHA): urban housing. <span class="law">RA 7586</span> (NIPAS): protected areas.</td></tr><tr><td>1997</td><td><span class="law">RA 8371</span> (IPRA): ancestral domains. <span class="law">RA 8435</span> (AFMA): strategic agricultural zones.</td></tr><tr><td>2001–2011</td><td><span class="ag">LAMP</span>, the Land Administration and Management Project (DENR with the World Bank and AusAID): pilot reforms for faster, cheaper titling.</td></tr><tr><td>2009–2010</td><td><span class="law">RA 9700</span> (CARPER) extended CARP. <span class="law">RA 10023</span> created residential free patents.</td></tr><tr><td>2019</td><td><span class="law">RA 11201</span> created <span class="ag">DHSUD</span>. <span class="law">RA 11231</span> removed restrictions on agricultural free patents.</td></tr><tr><td>2021</td><td><span class="law">RA 11573</span>: judicial confirmation and free patents now require <b>20 years</b> of possession of A&D land, up to 12 ha. A DENR geodetic engineer's certification imprinted on the approved survey plan is sufficient proof that the land is A&D.</td></tr><tr><td>2023</td><td><span class="law">RA 11953</span>, New Agrarian Emancipation Act: condoned agrarian reform beneficiaries' unpaid amortizations.</td></tr></tbody></table></div>
+<aside class="callout example"><div class="c-ic" aria-hidden="true">PH</div><div><div class="c-t">Today's issues</div><div class="c-b">Overlapping mandates, untitled lands, fake and overlapping titles, and misaligned DENR cadastral maps and LRA records. LRA's computerization has produced <b>electronic titles (e-Titles)</b>. A unified <b>National Land Use Act</b> has been proposed in Congress for decades but is still pending.</div></div></aside>
+  <div class="mf-slot" data-m="tr"></div>
+  <div class="case-slot" data-case="tuason" data-topic="Land Administration during the Third Republic and the Contemporary Period"></div><div class="case-slot" data-case="aslp" data-topic="Land Administration during the Third Republic and the Contemporary Period"></div>
+  <div class="qc" data-sec="tr"></div>
+  <div class="l-end"><button class="btn small donebtn" data-sec="tr" aria-pressed="false">Mark topic as complete</button><a class="btn small" href="#lm">Next: 3.1 Concept of Land Management in the Philippines →</a></div>
+</section>
+</section>
+<section class="part acc-teal" id="p3">
+  <div class="part-head"><div class="pn">Part 3</div><h2>Land Management and Development</h2></div>
+  <div class="part-intro lesson"><div class="compare"><div class="cmp l"><div class="cmp-t">Land Management</div><div><b>Policy, rights, and allocation</b>: deciding who may use land and for what (classification, disposition, zoning).</div></div><div class="cmp-vs" aria-hidden="true">vs</div><div class="cmp r"><div class="cmp-t">Land Development</div><div><b>Physical use and growth</b>: actually changing the land (farms, subdivisions, roads, industries).</div></div></div></div>
+  
+<section class="lesson acc-teal" id="lm">
+  <div class="l-head"><div class="l-code">3.1</div><div>
+    <h3>Concept of Land Management in the Philippines</h3><div class="l-lead">Using and developing land resources so they serve economic, social, and environmental needs, now and for future generations.</div>
+    <div class="l-meta"><span class="pill">⏱ ~3 min read</span><span class="pill">⚖ 1 case digest</span><span class="pill" data-state="lm">Not yet completed</span></div>
+  </div></div>
+  <h4 class="sub">Meaning and purpose</h4>
+<p><b>Land management</b> is the process of managing the <b>use and development</b> of land resources in both rural and urban areas. Its purposes are to <b>maximize productivity</b>, <b>allocate land fairly</b>, <b>protect the environment and the public domain</b>, <b>reduce disaster risk</b>, and <b>balance competing uses</b> such as food, housing, industry, and conservation.</p>
+<h4 class="sub">Legal foundation: how classification evolved</h4>
+<ol class="timeline" data-tl="classif"><li class="tl-item" tabindex="0"><div class="tl-date">1902</div><div class="tl-body"><div class="tl-title">Philippine Bill</div><div class="tl-text">Placed public lands under government control, to be administered for the benefit of the inhabitants.</div></div></li><li class="tl-item" tabindex="0"><div class="tl-date">1919</div><div class="tl-body"><div class="tl-title">Act 2874</div><div class="tl-text">The Governor-General classified public land as <b>alienable/disposable, timber, or mineral</b>.</div></div></li><li class="tl-item" tabindex="0"><div class="tl-date">1936</div><div class="tl-body"><div class="tl-title">CA 141</div><div class="tl-text">The President classifies public land (Sec. 6) and sub-classifies A&D land by use (Sec. 9).</div></div></li><li class="tl-item" tabindex="0"><div class="tl-date">1975</div><div class="tl-body"><div class="tl-title">PD 705</div><div class="tl-text">Introduced a scientific approach to forest classification: <b>land at 18% slope or more cannot be classified A&D</b>, and forest land at 50% slope or more cannot be used for grazing (Sec. 15).</div></div></li><li class="tl-item" tabindex="0"><div class="tl-date">1987</div><div class="tl-body"><div class="tl-title">Constitution, Art. XII</div><div class="tl-text">Four classes: <b>agricultural, forest or timber, mineral, and national parks</b>. Only agricultural land is alienable. Once Congress fixes the limits of forest lands and national parks, they <b>cannot be increased or reduced except by law</b> (Sec. 4).</div></div></li></ol>
+<h4 class="sub">Principles of land management</h4>
+<ol class="list"><li><b class="k">Classification before disposition</b>: no A&D declaration means no private title (<span class="law">CA 141, Sec. 8</span>; <i>Sec. of DENR v. Yap</i>).</li><li><b class="k">Sustainability and intergenerational responsibility</b> (<span class="law">Art. II, Sec. 16</span>; <i>Oposa v. Factoran</i>).</li><li><b class="k">Stewardship and the social function of property</b> (<span class="law">Art. XII, Sec. 6</span>).</li><li><b class="k">Planned zonification</b>: each use is placed where it fits best through the <b>Comprehensive Land Use Plan (CLUP)</b> and zoning ordinance (<span class="law">RA 7160</span>; <span class="law">EO 72, 1993</span>).</li><li><b class="k">Integrated “ridge to reef” management</b>: upland forests, lowland farms, coasts, and municipal waters are managed as one system.</li><li><b class="k">Participation and equity</b>: public hearings on the CLUP and FPIC for indigenous peoples.</li><li><b class="k">Risk-sensitive planning</b>: avoid hazard areas (<span class="law">RA 10121, 2010</span>).</li></ol>
+<h4 class="sub">The science of zonification (sub-classifying A&amp;D land)</h4>
+<div class="tbl-wrap"><table class="tbl c3"><thead><tr><th>Use zone</th><th>Main factor</th><th>What it requires</th></tr></thead><tbody><tr><td><b>Agricultural</b></td><td>Nature</td><td>Suitable land forms (plains, valleys, wetlands), gentle slopes that reduce runoff, and fertile, erosion-resistant soils.</td></tr><tr><td><b>Settlement</b></td><td>Safety and logistics</td><td>Hazard-free sites, preferably on marginal (less productive) soils, with good connectivity, low development cost, and closeness to beneficiaries.</td></tr><tr><td><b>Business</b></td><td>Integration</td><td>Direct access to settlements, compatibility with homes nearby, and a commercial area in every new subdivision or town.</td></tr><tr><td><b>Industrial</b></td><td>Separation</td><td>Located away from settlements to prevent pollution (light industries excepted), with strong links to agricultural areas for raw materials.</td></tr><tr><td><b>Institutional</b></td><td>Accessibility</td><td>Schools, hospitals, and government centers must be easy for the public to reach.</td></tr></tbody></table></div><div class="tcap">Adapted from the class reference slides on zonification.</div>
+<aside class="callout note"><div class="c-ic" aria-hidden="true">i</div><div><div class="c-t">Forest lands and municipal waters</div><div class="c-b"><b>Production forests</b> can be sub-classified for grazing, tree planting, agroforestry, or fishponds and included in the CLUP. In <b>municipal waters</b> (up to 15 km from the shoreline, <span class="law">RA 7160</span>), LGUs share authority with national agencies such as DENR, BFAR, and PPA. This overlap is why coordinated <b>ridge-to-reef</b> plans are needed.</div></div></aside>
+<aside class="callout example"><div class="c-ic" aria-hidden="true">PH</div><div><div class="c-t">Philippine example: Boracay, 2018</div><div class="c-b">Years of overdevelopment, easement violations, and poor sewerage led to a six-month closure and rehabilitation under a state of calamity (<span class="law">Proclamation No. 475, 2018</span>). It is a lesson in the cost of weak land management.</div></div></aside>
+  <div class="mf-slot" data-m="lm"></div>
+  <div class="case-slot" data-case="oposa" data-topic="Concept of Land Management in the Philippines"></div>
+  <div class="qc" data-sec="lm"></div>
+  <div class="l-end"><button class="btn small donebtn" data-sec="lm" aria-pressed="false">Mark topic as complete</button><a class="btn small" href="#ap">Next: 3.2 Agricultural Productivity →</a></div>
+</section>
+<section class="lesson acc-teal" id="ap">
+  <div class="l-head"><div class="l-code">3.2</div><div>
+    <h3>Agricultural Productivity</h3><div class="l-lead">Good land management raises farm output by using the right land, securing farmers' tenure, and protecting farmland from premature conversion.</div>
+    <div class="l-meta"><span class="pill">⏱ ~3 min read</span><span class="pill">⚖ 1 case digest</span><span class="pill" data-state="ap">Not yet completed</span></div>
+  </div></div>
+  <h4 class="sub">How land management drives agricultural productivity</h4>
+<div class="cards"><div class="card" tabindex="0"><div class="card-t">1. Right land, right use</div><div class="card-b">Classify land by <b>capability and suitability</b> (soil, slope, water). Farming steep forest land causes erosion and low yields; prime flat land should stay in crops.</div></div><div class="card" tabindex="0"><div class="card-t">2. Secure tenure</div><div class="card-b">Owner-cultivators invest in their land. Agrarian reform (<span class="law">PD 27</span>, <span class="law">RA 6657</span>) aims to make tillers owners.</div></div><div class="card" tabindex="0"><div class="card-t">3. Support services</div><div class="card-b">Credit, irrigation, roads, extension, and post-harvest facilities, required under <span class="law">RA 6657</span> and <span class="law">RA 8435</span>.</div></div><div class="card" tabindex="0"><div class="card-t">4. Protect farmland</div><div class="card-b">Limits on reclassification and conversion keep productive and irrigated land from being lost to subdivisions.</div></div></div>
+<h4 class="sub">Key laws and tools</h4>
+<div class="tbl-wrap"><table class="tbl c2"><thead><tr><th>Law or tool</th><th>Contribution to productivity</th></tr></thead><tbody><tr><td><span class="law">CA 141</span>, homestead</td><td>Ownership required actual <b>occupation and cultivation</b>, so productive use was a condition of the grant.</td></tr><tr><td><span class="law">RA 3844 (1963)</span></td><td>Leasehold replaced share tenancy; land capability surveys; agricultural support agencies.</td></tr><tr><td><span class="law">RA 6657</span> Sec. 65</td><td><span class="ag">DAR</span> may approve <b>conversion</b> only when land has ceased to be economically feasible for farming or the area has become urbanized.</td></tr><tr><td><span class="law">RA 8435 (AFMA, 1997)</span></td><td>Identifies <b>SAFDZs</b> (Strategic Agriculture and Fisheries Development Zones) and a network of protected agricultural areas (NPAAAD) to be kept for farming.</td></tr><tr><td><span class="law">RA 7160</span> Sec. 20</td><td>Caps on LGU reclassification of agricultural land (see below).</td></tr><tr><td><span class="law">RA 11231 (2019)</span></td><td>Agricultural free patents can be sold or mortgaged immediately, so the land can be used as collateral for credit.</td></tr><tr><td><span class="law">RA 11953 (2023)</span></td><td>Condoned agrarian reform beneficiaries' loans, freeing farmers to reinvest.</td></tr></tbody></table></div>
+<aside class="callout key"><div class="c-ic" aria-hidden="true">★</div><div><div class="c-t">LGU reclassification limits (RA 7160, Sec. 20)</div><div class="c-b">A city or municipality may reclassify agricultural land by ordinance, after public hearings, only if the land has ceased to be economically feasible for farming (as determined by <span class="ag">DA</span>) or has substantially greater value for other uses. The total is capped as a share of its agricultural land: <b>highly urbanized and independent component cities: 15%</b> · <b>component cities and 1st–3rd class municipalities: 10%</b> · <b>4th–6th class municipalities: 5%</b>. Land distributed to agrarian reform beneficiaries is not affected; its conversion follows RA 6657, Sec. 65.</div></div></aside>
+<div class="compare"><div class="cmp l"><div class="cmp-t">Reclassification (LGU)</div><div>The Sanggunian specifies, through the land use plan, how agricultural land <b>may</b> be used for non-agricultural purposes.</div></div><div class="cmp-vs" aria-hidden="true">vs</div><div class="cmp r"><div class="cmp-t">Conversion (DAR)</div><div><span class="ag">DAR</span> approval to <b>actually change</b> the use of agricultural land. It is required even after LGU reclassification if the reclassification came after June 15, 1988.</div></div></div>
+<aside class="callout example"><div class="c-ic" aria-hidden="true">PH</div><div><div class="c-t">Philippine example</div><div class="c-b">The <b>Sumilao, Bukidnon farmers</b> marched to Manila in 2007 against the conversion of their land to agro-industrial use. The march put the conflict between farmland protection and development in the national spotlight.</div></div></aside>
+  <div class="mf-slot" data-m="ap"></div>
+  <div class="case-slot" data-case="ros" data-topic="Agricultural Productivity"></div>
+  <div class="qc" data-sec="ap"></div>
+  <div class="l-end"><button class="btn small donebtn" data-sec="ap" aria-pressed="false">Mark topic as complete</button><a class="btn small" href="#sd">Next: 3.3 Settlement Development →</a></div>
+</section>
+<section class="lesson acc-teal" id="sd">
+  <div class="l-head"><div class="l-code">3.3</div><div>
+    <h3>Settlement Development</h3><div class="l-lead">Allocating, planning, and developing land for homes and communities, from frontier colonies to socialized housing.</div>
+    <div class="l-meta"><span class="pill">⏱ ~3 min read</span><span class="pill">⚖ 1 case digest</span><span class="pill" data-state="sd">Not yet completed</span></div>
+  </div></div>
+  <p><b>Settlement development</b> is the planned allocation and development of land for <b>human settlements</b>: homes, villages, towns, and resettlement sites, together with their basic services.</p>
+<h4 class="sub">How the approach evolved</h4>
+<ol class="timeline" data-tl="settle"><li class="tl-item" tabindex="0"><div class="tl-date">1935–1939</div><div class="tl-body"><div class="tl-title">Colonization</div><div class="tl-text"><span class="law">Act 4197</span> and the <span class="ag">NLSA</span> (<span class="law">CA 441</span>) organized frontier settlement in the Koronadal and Allah Valleys.</div></div></li><li class="tl-item" tabindex="0"><div class="tl-date">1950–1954</div><div class="tl-body"><div class="tl-title">Resettlement and rehabilitation</div><div class="tl-text"><span class="ag">LASEDECO</span>, <span class="ag">EDCOR</span>, and <span class="ag">NARRA</span> (<span class="law">RA 1160</span>) moved the landless and surrendered rebels to Mindanao and Palawan.</div></div></li><li class="tl-item" tabindex="0"><div class="tl-date">1975–1978</div><div class="tl-body"><div class="tl-title">Urban housing</div><div class="tl-text">The <span class="ag">NHA</span> (<span class="law">PD 757, 1975</span>), the Subdivision and Condominium Buyers' Protective Decree (<span class="law">PD 957, 1976</span>), and the Ministry of Human Settlements (1978).</div></div></li><li class="tl-item" tabindex="0"><div class="tl-date">1992</div><div class="tl-body"><div class="tl-title">UDHA</div><div class="tl-text"><span class="law">RA 7279</span>, the Urban Development and Housing Act: socialized housing for the underprivileged and homeless, and humane rules on eviction and relocation.</div></div></li><li class="tl-item" tabindex="0"><div class="tl-date">2019</div><div class="tl-body"><div class="tl-title">DHSUD</div><div class="tl-text"><span class="law">RA 11201</span> created <span class="ag">DHSUD</span>, merging the HLURB and HUDCC into one department for housing and land-use planning.</div></div></li></ol>
+<h4 class="sub">How land is allocated, planned, and developed</h4>
+<ol class="list"><li><b>Plan</b>: the CLUP and zoning ordinance designate residential zones (<span class="law">RA 7160</span>; <span class="law">EO 72, 1993</span>).</li><li><b>Use public land</b>: townsite reservations (<span class="law">CA 141, Sec. 9(d)</span>) and <b>residential free patents</b> (<span class="law">RA 10023</span>): up to <b>200 sq m</b> in highly urbanized cities, 500 sq m in other cities, 750 sq m in 1st–2nd class municipalities, and 1,000 sq m elsewhere.</li><li><b>Acquire land for socialized housing</b> (<span class="law">RA 7279</span>) in order of priority: government land first, then A&D public land, idle land, and so on, with private land last. Modes include community mortgage, land swapping, land banking, donation, joint venture, and negotiated purchase, with <b>expropriation only as a last resort</b>.</li><li><b>Apply development standards</b>: <span class="law">PD 957</span> (protection of buyers) and <span class="law">BP 220</span> (socialized and economic housing standards).</li><li><b>Provide basic services</b>: water, power, roads, schools, and health facilities in resettlement sites.</li><li><b>Relocate humanely</b>: adequate consultation, notice, and relocation before any eviction (<span class="law">RA 7279</span>).</li></ol>
+<aside class="callout key"><div class="c-ic" aria-hidden="true">★</div><div><div class="c-t">Siting factors for settlement areas</div><div class="c-b"><b>Safety</b>: hazard-free sites, away from flood, landslide, and fault zones, and respecting riverbank easements under the Water Code (<span class="law">PD 1067</span>). <b>Optimization</b>: use marginal soils and save prime farmland. <b>Logistics</b>: connectivity, development cost, and closeness to the beneficiaries' livelihoods.</div></div></aside>
+<aside class="callout example"><div class="c-ic" aria-hidden="true">PH</div><div><div class="c-t">Philippine examples</div><div class="c-b"><b>Dadiangas</b> (now General Santos City) grew from an NLSA settlement founded in 1939. After Typhoon <b>Yolanda</b> (2013), coastal “no-build zones” in Leyte required large-scale planned relocation.</div></div></aside>
+  <div class="mf-slot" data-m="sd"></div>
+  <div class="case-slot" data-case="sumulong" data-topic="Settlement Development"></div>
+  <div class="qc" data-sec="sd"></div>
+  <div class="l-end"><button class="btn small donebtn" data-sec="sd" aria-pressed="false">Mark topic as complete</button><a class="btn small" href="#pr">Next: 3.4 Proclamations and Reserve Areas →</a></div>
+</section>
+<section class="lesson acc-teal" id="pr">
+  <div class="l-head"><div class="l-code">3.4</div><div>
+    <h3>Proclamations and Reserve Areas</h3><div class="l-lead">The President can set aside public land for a specific public purpose. While it is reserved, nobody can own it.</div>
+    <div class="l-meta"><span class="pill">⏱ ~4 min read</span><span class="pill">⚖ 1 case digest</span><span class="pill" data-state="pr">Not yet completed</span></div>
+  </div></div>
+  <h4 class="sub">What is a presidential proclamation?</h4>
+<figure class="quote"><blockquote>Acts of the President fixing a date or declaring a status or condition of public moment or interest, upon the existence of which the operation of a specific law or regulation is made to depend, shall be promulgated in proclamations which shall have the force of an executive order.</blockquote><figcaption>Administrative Code of 1987 (EO 292), Book III, Sec. 4</figcaption></figure>
+<h4 class="sub">Legal bases for reserving land</h4>
+<ul class="list"><li><span class="law">CA 141, Sec. 83</span>: the President may <b>designate by proclamation</b> any tract of public land as a <b>reservation</b> for government use or for quasi-public purposes such as highways, irrigation, public parks, and workers' villages.</li><li><span class="law">CA 141, Sec. 88</span>: reserved land is <b>non-alienable</b> and <b>not subject to occupation, entry, sale, lease, or other disposition</b> until it is again declared alienable.</li><li><span class="law">EO 292, Book III, Sec. 14</span>: the President may reserve public-domain land for settlement, public use, and specific public purposes; it stays reserved <b>until otherwise provided by law or proclamation</b>.</li><li><span class="law">PD 705</span> (forest and watershed reserves), <span class="law">RA 7586 (NIPAS)</span>, and <span class="law">RA 11038 (E-NIPAS, 2018)</span>: protected areas, many first proclaimed and then <b>established by law</b> for permanence.</li></ul>
+<h4 class="sub">Types and purposes, with examples</h4>
+<div class="tbl-wrap"><table class="tbl c3"><thead><tr><th>Type of reserve</th><th>Purpose</th><th>Philippine example</th></tr></thead><tbody><tr><td>Military reservation</td><td>National defense</td><td>Fort Bonifacio (Fort McKinley), <span class="law">Proclamation No. 423 (1957)</span>; portions were later released for development</td></tr><tr><td>School or research reservation</td><td>Education and agricultural research</td><td>Central Mindanao University (then Mindanao Agricultural College), Musuan, Bukidnon, <span class="law">Proclamation No. 476 (1958)</span></td></tr><tr><td>Townsite or housing reserve</td><td>Settlement and housing</td><td>Lungsod Silangan Townsite (Antipolo, San Mateo, Montalban), <span class="law">Proclamation No. 1637 (1979)</span></td></tr><tr><td>National park or protected area</td><td>Conservation and watershed</td><td><b>Mount Apo</b>: <span class="law">Proc. No. 59 (1936)</span> national park → part excluded for agriculture (<span class="law">Proc. 413, 1957</span>) → natural park (<span class="law">Proc. 882, 1996</span>) → <span class="law">RA 9237 (2004)</span></td></tr><tr><td>Tourist zone and marine reserve</td><td>Tourism and marine protection</td><td>Boracay and other islands, <span class="law">Proclamation No. 1801 (1978)</span></td></tr></tbody></table></div>
+<h4 class="sub">Implications for land ownership and use</h4>
+<ol class="list"><li><b>Inalienable while reserved</b>: the land cannot be acquired by possession, however long. Titles issued over reserved land are void.</li><li><b>Use is limited to the declared purpose</b> and managed by the designated agency (for example DND, a state university, or the tourism authority).</li><li><b>Prior private rights</b> existing before the proclamation are respected, but they must be proven.</li><li><b>A reservation is not a classification</b>: declaring a tourist zone does not make land A&D (<i>Sec. of DENR v. Yap</i>).</li><li><b>Release requires a new proclamation or law</b>. Only after that can the land be disposed of under CA 141 or other laws.</li><li><b>CARP exemption</b> applies to land actually, directly, and exclusively used for parks, forest reserves, school sites, and similar purposes (<span class="law">RA 6657, Sec. 10</span>).</li><li><b>Forest lands and national parks</b> whose limits Congress has fixed can be changed <b>only by law</b> (<span class="law">Art. XII, Sec. 4</span>).</li></ol>
+  <div class="mf-slot" data-m="pr"></div>
+  <div class="case-slot" data-case="yap" data-topic="Proclamations and Reserve Areas"></div>
+  <div class="qc" data-sec="pr"></div>
+  <div class="l-end"><button class="btn small donebtn" data-sec="pr" aria-pressed="false">Mark topic as complete</button><a class="btn small" href="#lab">Go to the Study Lab →</a></div>
+</section>
+</section>
+<section class="lab" id="lab">
+  <div class="lab-head"><div class="eyebrow">Practice</div><h2>Study Lab</h2><p>Four ways to drill the material before the exam.</p></div>
+  <div class="tools" role="tablist">
+    <button data-tool="flash" role="tab"><span>🃏</span>Flashcards<small>45 laws, cases &amp; terms</small></button>
+    <button data-tool="exam" role="tab"><span>📝</span>Practice Exam<small>52-question bank</small></button>
+    <button data-tool="duel" role="tab"><span>⏳</span>Which Came First?<small>Timeline duel</small></button>
+    <button data-tool="match" role="tab"><span>⚖️</span>Case Matcher<small>Case → doctrine</small></button>
+  </div>
+  <div class="tool" id="tool-flash">
+    <h3>Flashcards</h3><div class="hint">Flip with a click or the Space key; use ← → to move. Mark the cards you know and review the rest.</div>
+    <div class="chips" id="fcFilters"><button class="chip" data-f="All" aria-pressed="true">All</button><button class="chip" data-f="Laws" aria-pressed="false">Laws</button><button class="chip" data-f="Cases" aria-pressed="false">Cases</button><button class="chip" data-f="Concepts" aria-pressed="false">Concepts</button><button class="chip" data-review aria-pressed="false">Only cards to review</button></div>
+    <div class="fc-stage"><div class="fc" id="fc" tabindex="0" role="button" aria-label="Flashcard: click to flip"><div class="fc-face fc-front" id="fcFront"></div><div class="fc-face fc-back" id="fcBack"></div></div></div>
+    <div class="fc-ctrl"><div class="grp"><button class="btn small" id="fcPrev">←</button><button class="btn small" id="fcFlipBtn">Flip</button><button class="btn small" id="fcNext">→</button><button class="btn small" id="fcShuffle">Shuffle</button></div>
+      <span class="fc-count" id="fcCount"></span>
+      <div class="grp"><button class="btn small badb" id="fcAgain">Review again</button><button class="btn small okb" id="fcKnow">I knew it ✓</button></div></div>
+  </div>
+  <div class="tool" id="tool-exam">
+    <h3>Practice Exam</h3><div class="hint">Multiple choice, like the term exam. You get instant feedback and a list of the items you missed.</div>
+    <div class="ex-setup" id="exSetup">
+      <label>Questions<select id="exN"><option value="10">10</option><option value="20" selected>20</option><option value="all">All (52)</option></select></label>
+      <label>Coverage<select id="exScope"><option value="all">All topics</option><option value="p1">Part 1 · Land Governance</option><option value="p2">Part 2 · Land Administration</option><option value="p3">Part 3 · Land Management</option></select></label>
+      <button class="btn primary" id="exGo">Start exam →</button>
+    </div>
+    <div id="exRun" hidden></div>
+  </div>
+  <div class="tool" id="tool-duel">
+    <h3>Which Came First?</h3><div class="hint">Two laws, cases, or events. Tap the one that happened <b>earlier</b>. Build a streak!</div>
+    <div class="duel" id="duel"></div>
+    <div class="scorebar"><span>Correct <b id="dPlayed">0/0</b></span><span>Streak <b id="dStreak">0</b></span><span>Best <b id="dBest">0</b></span></div>
+    <button class="btn primary" id="dNext">Next pair →</button>
+  </div>
+  <div class="tool" id="tool-match">
+    <h3>Case Matcher</h3><div class="hint">Pick a case on the left, then the doctrine it stands for on the right.</div>
+    <div class="match"><div><h5>Cases</h5><div id="mCases"></div></div><div><h5>Doctrines</h5><div id="mDocs"></div></div></div>
+    <div class="scorebar"><span id="mStat"></span></div><button class="btn" id="mReset">Shuffle &amp; restart</button>
+  </div>
+</section>
+<section class="final acc-green" id="takeaways">
+  <div class="eyebrow" style="color:var(--green)">Summary</div><h2>Key Takeaways</h2>
+  <p class="hint" style="color:var(--muted)">Tick each one when you can explain it without looking.</p>
+  <ol class="tk"><li><span class="box"></span><div><b class="k">Regalian Doctrine</b> (<span class="law">Art. XII, Sec. 2</span>): the State owns public lands, and private ownership must be proven. Native title is the main exception.</div></li><li><span class="box"></span><div><b class="k">Governance</b> sets the rules, <b class="k">administration</b> records and implements rights, and <b class="k">management</b> plans and develops land use.</div></li><li><span class="box"></span><div>Only <b class="k">agricultural</b> public land is alienable. Citizens may acquire up to <b class="k">12 ha</b> or lease up to <b class="k">500 ha</b>; corporations may only <b class="k">lease</b>, up to <b class="k">1,000 ha</b> (the 1935 Constitution allowed 144 ha by purchase, 1,024 ha by lease, and 24 ha by homestead).</div></li><li><span class="box"></span><div><b class="k">Historical flow</b>: customary and communal (pre-colonial) → Regalian Doctrine (Spain) → Torrens system and public land acts (America) → <span class="law">CA 141</span> and social justice (Commonwealth) → reconstitution and unrest (post-war) → NARRA, LTA, <span class="law">RA 3844</span>, DAR (Third Republic) → <span class="law">PD 27</span>, <span class="law">PD 705</span>, <span class="law">PD 1529</span> (Martial Law) → CARP, the LGC, IPRA, DHSUD (Fifth Republic).</div></li><li><span class="box"></span><div>The <b class="k">Third Republic</b> is <span class="dt">1946–1972</span>. The present period is the <b class="k">Fifth Republic</b> under the <span class="dt">1987</span> Constitution.</div></li><li><span class="box"></span><div><b class="k">Classification comes before disposition</b>: a positive act declaring land A&D is required (<i>Yap</i>, <span class="law">RA 11573</span>).</div></li><li><span class="box"></span><div><b class="k">Reclassification (LGU) is not conversion (DAR)</b> (<i>Ros v. DAR</i>). The reclassification caps are 15%, 10%, and 5%.</div></li><li><span class="box"></span><div>Expropriation for land reform moved from <b class="k">“large estates only”</b> (<i>Guido</i>, 1949) to <b class="k">social justice and the number of people benefited</b> (<i>J.M. Tuason</i>, 1970; <i>Sumulong</i>, 1987). CARP is a <b class="k">revolutionary expropriation</b> (<i>ASLP</i>, 1989).</div></li><li><span class="box"></span><div><b class="k">Reserved land is inalienable</b> until it is released by proclamation or law (<span class="law">CA 141, Sec. 88</span>).</div></li><li><span class="box"></span><div><b class="k">Sustainability</b>: the State manages land and resources for future generations (<i>Oposa</i>). <b class="k">Transparency and rule of law</b> govern public land deals (<i>Chavez v. PEA</i>).</div></li></ol>
+  <h4 class="sub">Case digest cheat sheet</h4>
+  <input class="search" id="csSearch" type="search" placeholder="Filter cases… (e.g., Boracay, CARP, 1949)" aria-label="Filter cases">
+  <div class="tbl-wrap"><table class="tbl" id="csTable"><thead><tr><th>Case</th><th>Topic</th><th>Doctrine to remember</th></tr></thead><tbody><tr><td><a href="#case-chavez"><b>Chavez v. PEA</b></a><br><small>G.R. No. 133250 · July 9, 2002</small></td><td>1 Land Governance</td><td>Private corporations may only lease, not own, alienable public lands; the right to information covers ongoing negotiations.</td></tr><tr><td><a href="#case-cruz"><b>Cruz v. DENR</b></a><br><small>G.R. No. 135385 · December 6, 2000</small></td><td>2.1 Pre-colonial Land Administration</td><td>IPRA stands (petition dismissed on a 7–7 tie); ancestral domains held since time immemorial are linked to native title.</td></tr><tr><td><a href="#case-guido"><b>Guido v. RPA</b></a><br><small>G.R. No. L-2089 · October 31, 1949</small></td><td>2.2 Land Administration during the Commonwealth</td><td>Expropriation for resale under the 1935 Constitution was meant for large estates; taking a small lot for a few families is not public use.</td></tr><tr><td><a href="#case-krivenko"><b>Krivenko v. Register of Deeds</b></a><br><small>G.R. No. L-630 · November 15, 1947</small></td><td>2.3 Land Administration after World War II</td><td>Aliens cannot acquire private or public agricultural land, which includes residential land; they may only lease.</td></tr><tr><td><a href="#case-tuason"><b>J.M. Tuason v. LTA</b></a><br><small>G.R. No. L-21064 · February 18, 1970</small></td><td>2.4 Land Administration during the Third Republic and the Contemporary Period</td><td>A statute expropriating a specific estate for resale to its occupants is valid; Art. XIII, Sec. 4 is read in light of social justice.</td></tr><tr><td><a href="#case-aslp"><b>Assoc. of Small Landowners v. Sec. of Agrarian Reform</b></a><br><small>G.R. No. 78742 (with G.R. Nos. 79310, 79744, 79777) · July 14, 1989</small></td><td>2.4 Land Administration during the Third Republic and the Contemporary Period</td><td>CARP is a 'revolutionary kind of expropriation'; payment partly in bonds is valid; title passes only upon full payment.</td></tr><tr><td><a href="#case-oposa"><b>Oposa v. Factoran</b></a><br><small>G.R. No. 101083 · July 30, 1993</small></td><td>3.1 Concept of Land Management in the Philippines</td><td>The right to a balanced and healthful ecology is enforceable; intergenerational responsibility; timber licenses are not contracts.</td></tr><tr><td><a href="#case-ros"><b>Ros v. DAR</b></a><br><small>G.R. No. 132477 · August 31, 2005</small></td><td>3.2 Agricultural Productivity</td><td>LGU reclassification does not replace DAR conversion; land reclassified after June 15, 1988 needs DAR approval.</td></tr><tr><td><a href="#case-sumulong"><b>Sumulong v. Guerrero</b></a><br><small>G.R. No. L-48685 · September 30, 1987</small></td><td>3.3 Settlement Development</td><td>Socialized housing is public use (the number-of-beneficiaries test), but just compensation is for the courts to determine.</td></tr><tr><td><a href="#case-yap"><b>Sec. of DENR v. Yap (Boracay)</b></a><br><small>G.R. No. 167707 and G.R. No. 173775 · October 8, 2008</small></td><td>3.4 Proclamations and Reserve Areas</td><td>A tourist-zone or marine-reserve proclamation is not A&D classification; a positive act is required (Boracay).</td></tr></tbody></table></div>
+</section>
+<section class="final refs" id="refs"><h2>References</h2><h4>Supreme Court decisions (full texts verified on Lawphil)</h4><ol><li><i>Francisco I. Chavez v. Public Estates Authority and Amari Coastal Bay Development Corporation</i>, G.R. No. 133250, July 9, 2002. <a href="https://lawphil.net/judjuris/juri2002/jul2002/gr_133250_2002.html" target="_blank" rel="noopener">Lawphil ↗</a></li><li><i>Isagani Cruz and Cesar Europa v. Secretary of Environment and Natural Resources, et al.</i>, G.R. No. 135385, December 6, 2000. <a href="https://lawphil.net/judjuris/juri2000/dec2000/gr_135385_2000.html" target="_blank" rel="noopener">Lawphil ↗</a></li><li><i>Justa G. Guido v. Rural Progress Administration</i>, G.R. No. L-2089, October 31, 1949. <a href="https://lawphil.net/judjuris/juri1949/oct1949/gr_l-2089_1949.html" target="_blank" rel="noopener">Lawphil ↗</a></li><li><i>Alexander A. Krivenko v. The Register of Deeds, City of Manila</i>, G.R. No. L-630, November 15, 1947. <a href="https://lawphil.net/judjuris/juri1947/nov1947/gr_l-630_1947.html" target="_blank" rel="noopener">Lawphil ↗</a></li><li><i>J.M. Tuason &amp; Co., Inc. v. The Land Tenure Administration, et al.</i>, G.R. No. L-21064, February 18, 1970. <a href="https://lawphil.net/judjuris/juri1970/feb1970/gr_21064_1970.html" target="_blank" rel="noopener">Lawphil ↗</a></li><li><i>Association of Small Landowners in the Philippines, Inc. v. Hon. Secretary of Agrarian Reform</i>, G.R. No. 78742 (with G.R. Nos. 79310, 79744, 79777), July 14, 1989. <a href="https://lawphil.net/judjuris/juri1989/jul1989/gr_78742_1989.html" target="_blank" rel="noopener">Lawphil ↗</a></li><li><i>Juan Antonio Oposa, et al. v. Hon. Fulgencio S. Factoran, Jr. (Secretary of DENR), et al.</i>, G.R. No. 101083, July 30, 1993. <a href="https://lawphil.net/judjuris/juri1993/jul1993/gr_101083_1993.html" target="_blank" rel="noopener">Lawphil ↗</a></li><li><i>Jose Luis Ros, et al. v. Department of Agrarian Reform, et al.</i>, G.R. No. 132477, August 31, 2005. <a href="https://lawphil.net/judjuris/juri2005/aug2005/gr_132477_2005.html" target="_blank" rel="noopener">Lawphil ↗</a></li><li><i>Lorenzo Sumulong and Emilia Vidanes-Balaoing v. Hon. Buenaventura Guerrero and National Housing Authority</i>, G.R. No. L-48685, September 30, 1987. <a href="https://lawphil.net/judjuris/juri1987/sep1987/gr_l-48685_1987.html" target="_blank" rel="noopener">Lawphil ↗</a></li><li><i>The Secretary of the Department of Environment and Natural Resources, et al. v. Mayor Jose S. Yap, et al.; Dr. Orlando Sacay, et al. v. The Secretary of DENR, et al.</i>, G.R. No. 167707 and G.R. No. 173775, October 8, 2008. <a href="https://lawphil.net/judjuris/juri2008/oct2008/gr_167707_2008.html" target="_blank" rel="noopener">Lawphil ↗</a></li></ol><h4>Constitution, laws, and issuances (full texts on Lawphil and the Official Gazette)</h4><ol><li>1987 Constitution, Art. XII (National Economy and Patrimony) <a href="https://lawphil.net/consti/cons1987.html" target="_blank" rel="noopener">Open ↗</a></li><li>1935 Constitution, Art. XIII (Conservation and Utilization of Natural Resources) <a href="https://lawphil.net/consti/cons1935.html" target="_blank" rel="noopener">Open ↗</a></li><li>Commonwealth Act No. 141 (Public Land Act, 1936) <a href="https://lawphil.net/statutes/comacts/ca1936/ca_141_1936.html" target="_blank" rel="noopener">Open ↗</a></li><li>Commonwealth Act No. 539 (1940); CA No. 20 (1936); CA No. 441 (1939) <a href="https://lawphil.net/statutes/comacts/ca1940/ca_539_1940.html" target="_blank" rel="noopener">Open ↗</a></li><li>Executive Order No. 191 (1939), Rural Progress Administration; EO No. 376 (1950) <a href="https://lawphil.net/executive/execord/eo1939/eo_191_1939.html" target="_blank" rel="noopener">Open ↗</a></li><li>RA 26 (1946); RA 34 (1946); RA 1160 (1954); RA 1199 (1954); RA 1400 (1955) <a href="https://lawphil.net/statutes/repacts/ra1955/ra_1400_1955.html" target="_blank" rel="noopener">Open ↗</a></li><li>RA 3844 (1963), Agricultural Land Reform Code; RA 6389 (1971) <a href="https://lawphil.net/statutes/repacts/ra1963/ra_3844_1963.html" target="_blank" rel="noopener">Open ↗</a></li><li>PD 27 (1972); PD 705 (1975), Revised Forestry Code; PD 1529 (1978), Property Registration Decree <a href="https://lawphil.net/statutes/presdecs/pd1975/pd_705_1975.html" target="_blank" rel="noopener">Open ↗</a></li><li>EO 192 (1987), DENR Reorganization; EO 292 (1987), Administrative Code <a href="https://lawphil.net/executive/execord/eo1987/eo_192_1987.html" target="_blank" rel="noopener">Open ↗</a></li><li>RA 6657 (1988), CARL; RA 9700 (2009), CARPER <a href="https://lawphil.net/statutes/repacts/ra1988/ra_6657_1988.html" target="_blank" rel="noopener">Open ↗</a></li><li>RA 7160 (1991), Local Government Code, Sec. 20 <a href="https://lawphil.net/statutes/repacts/ra1991/ra_7160_1991.html" target="_blank" rel="noopener">Open ↗</a></li><li>EO 72 (March 25, 1993), Comprehensive Land Use Plans of LGUs <a href="https://lawphil.net/executive/execord/eo1993/eo_72_1993.html" target="_blank" rel="noopener">Open ↗</a></li><li>RA 7279 (1992), UDHA; RA 10023 (2010), Residential Free Patent; RA 11201 (2019), DHSUD <a href="https://lawphil.net/statutes/repacts/ra1992/ra_7279_1992.html" target="_blank" rel="noopener">Open ↗</a></li><li>RA 8371 (1997), IPRA; RA 8435 (1997), AFMA <a href="https://lawphil.net/statutes/repacts/ra1997/ra_8371_1997.html" target="_blank" rel="noopener">Open ↗</a></li><li>RA 11573 (2021), Improving the Confirmation Process for Imperfect Land Titles <a href="https://lawphil.net/statutes/repacts/ra2021/ra_11573_2021.html" target="_blank" rel="noopener">Open ↗</a></li><li>RA 9237 (2004), Mount Apo Protected Area Act; Proclamation No. 882 (1996) <a href="https://lawphil.net/statutes/repacts/ra2004/ra_9237_2004.html" target="_blank" rel="noopener">Open ↗</a></li><li>Official Gazette of the Republic of the Philippines (constitutions and issuances) <a href="https://www.officialgazette.gov.ph/constitutions/" target="_blank" rel="noopener">Open ↗</a></li></ol><h4>Books and reports</h4><ol><li>FAO (Palmer, Fricska &amp; Wehrmann) (2009). Towards Improved Land Governance. Land Tenure Working Paper 11. Rome: FAO.</li><li>UNECE (1996). Land Administration Guidelines. New York and Geneva: United Nations.</li><li>Williamson, I., Enemark, S., Wallace, J., &amp; Rajabifard, A. (2010). Land Administration for Sustainable Development. Redlands: ESRI Press.</li><li>Scott, W. H. (1994). Barangay: Sixteenth-Century Philippine Culture and Society. Quezon City: Ateneo de Manila University Press.</li><li>Course texts (syllabus Ref01–Ref02): Gatus, J. (2017). Governing Lands of the Public Domain (Rev. ed.); Gatus, J. (2018). Land (Ridge to Reef) Governance.</li><li>Class materials: Land Management &amp; Development slides; group reports on Pre-colonial, Commonwealth, Post-WWII, and Third Republic land administration.</li></ol>
+  <p class="hint" style="color:var(--muted);font-size:.85rem;margin-top:1em"><i>Cariño v. Insular Government</i>, 212 U.S. 449 (1909), was decided by the U.S. Supreme Court and is cited for background only. This guide is a study aid; read the full decisions for recitations and case studies.</p>
+</section>
+<footer class="site">Land Governance, Administration, and Management in the Philippines · Interactive Study Guide · Progress is saved only in this browser.</footer></div></main>
+</div>
+<button class="btn small" id="toTop" aria-label="Back to top">↑ Top</button>
+<div id="tip" role="tooltip"></div>
+<script type="application/json" id="data">{"glossary": {"Regalian Doctrine": "The State owns all lands of the public domain and natural resources; private ownership must be proven.", "native title": "Pre-conquest rights over land held since time immemorial; such land is presumed never to have been public.", "usufruct": "The right to use land and enjoy its fruits without owning it absolutely.", "tenure security": "Confidence that one's rights to land will be recognized and protected.", "social justice": "The constitutional mandate to reduce inequality, for example through agrarian reform and housing.", "A&D": "Alienable and disposable public land that may be privately acquired.", "positive act": "An official act (proclamation, EO, statute, certification) that classifies land as alienable and disposable.", "reservation": "Public land set aside by proclamation or law for a specific public purpose; inalienable while reserved.", "Comprehensive Land Use Plan (CLUP)": "An LGU's long-term plan for the use of land in its territory, enacted through a zoning ordinance.", "public use": "A purpose that benefits the public, which is required for valid expropriation.", "intergenerational responsibility": "The duty to preserve the environment for future generations (Oposa).", "conversion": "DAR's approval to actually change agricultural land to a non-agricultural use."}, "threeLs": [{"name": "Land Governance", "tag": "Sets the rules", "focus": "Rules, policies, decisions", "question": "Who decides, and by what rules?", "example": "1987 Constitution limits on who may own land"}, {"name": "Land Administration", "tag": "Records and implements rights", "focus": "Processes and records of rights (tenure, value, use, development)", "question": "How are rights surveyed, recorded, and transferred?", "example": "Survey → patent → title at the <span class=\"ag\">Registry of Deeds<\/span>"}, {"name": "Land Management & Development", "tag": "Plans and develops land use", "focus": "Planning and physical use of land", "question": "What should this land be used for?", "example": "An LGU zoning a flood-prone area as a no-build zone"}], "cases": {"chavez": {"id": "chavez", "short": "Chavez v. PEA", "year": 2002, "title": "Francisco I. Chavez v. Public Estates Authority and Amari Coastal Bay Development Corporation", "gr": "G.R. No. 133250", "date": "July 9, 2002", "court": "En Banc", "url": "https://lawphil.net/judjuris/juri2002/jul2002/gr_133250_2002.html", "facts": "The <span class=\"ag\">Public Estates Authority (PEA)<\/span>, created by <span class=\"law\">PD 1084 (1977)<\/span> to reclaim and dispose of land, held titles over the reclaimed <b>“Freedom Islands”<\/b> (157.84 ha) in Manila Bay, Parañaque. In 1995, PEA signed a Joint Venture Agreement with <b>Amari<\/b>, a private corporation, to develop the islands and reclaim 250 more hectares. Under the amended JVA, Amari would receive ownership of 77.34 ha of the islands and 290.156 ha of areas still to be reclaimed. Former Solicitor General Frank Chavez sued to compel PEA to disclose the renegotiations and to stop the deal.", "issue": "(1) Does the constitutional right to information cover ongoing negotiations? (2) May PEA transfer ownership of reclaimed and submerged public lands to a private corporation?", "ruling": "(1) <b>Yes.<\/b> The right to information covers official information on ongoing negotiations once there are definite propositions, subject to recognized exceptions. (2) <b>No.<\/b> The Freedom Islands are <b>alienable lands of the public domain<\/b>. PEA may <b>lease<\/b> them to private corporations but may not sell them, because <span class=\"law\">Art. XII, Sec. 3<\/span> bars private corporations from acquiring alienable public lands. The 592.15 ha of submerged areas remain inalienable natural resources until reclaimed and classified. The amended JVA was declared <b>void <i>ab initio<\/i><\/b>.", "relevance": "This case shows good land governance at work. <b>Rule of law<\/b>: the Constitution prevails over contracts. <b>Transparency<\/b>: the public may see land deals. The <b>Regalian Doctrine<\/b>: agencies hold public land in trust for the people.", "remember": "Government agencies cannot give away what the Constitution reserves. Corporations may only LEASE alienable public lands.", "predict": {"q": "Can PEA validly sell the reclaimed Freedom Islands to Amari, a private corporation?", "options": ["Yes, since PEA already holds titles to them", "No, private corporations cannot acquire alienable public land"], "answer": 1}, "doctrine": "Private corporations may only lease, not own, alienable public lands; the right to information covers ongoing negotiations."}, "cruz": {"id": "cruz", "short": "Cruz v. DENR", "year": 2000, "title": "Isagani Cruz and Cesar Europa v. Secretary of Environment and Natural Resources, et al.", "gr": "G.R. No. 135385", "date": "December 6, 2000", "court": "En Banc (Resolution)", "url": "https://lawphil.net/judjuris/juri2000/dec2000/gr_135385_2000.html", "connection": "No Supreme Court case deals with the pre-colonial period directly. <i>Cruz<\/i> is the closest landmark because it decided whether ancestral-domain rights, which come from pre-colonial customary tenure, can survive the Regalian Doctrine.", "facts": "Former Justice Isagani Cruz and Cesar Europa, as citizens and taxpayers, challenged <span class=\"law\">IPRA (RA 8371)<\/span> and its implementing rules. They argued that the provisions defining <b>ancestral domains and lands<\/b> and recognizing indigenous ownership of them, including the natural resources within, took away the State's ownership of public lands and resources and violated the <b>Regalian Doctrine<\/b> (<span class=\"law\">Art. XII, Sec. 2<\/span>). <span class=\"ag\">NCIP<\/span>, Senator Flavier, 112 indigenous groups, and the CHR defended the law.", "issue": "Are the IPRA provisions recognizing ancestral domains and native title unconstitutional for violating the Regalian Doctrine?", "ruling": "The Court was <b>split 7–7<\/b>. Seven justices voted to dismiss: six upheld IPRA on the merits (including the opinions of Justices Kapunan and Puno), and Justice Mendoza voted on procedural grounds. Seven voted to grant the petition. The vote stayed the same after redeliberation, so under <span class=\"law\">Rule 56, Sec. 7<\/span> the petition was <b>DISMISSED<\/b> and IPRA stayed in force.", "relevance": "The case links pre-colonial tenure to modern law. Justice Puno's widely cited separate opinion traced native title to <i>Cariño<\/i>: land held since time immemorial was never public land. Because the vote was a tie, <i>Cruz<\/i> left IPRA standing but produced no binding majority doctrine.", "remember": "Customary, pre-conquest possession is the root of native title, a recognized exception to the Regalian Doctrine. IPRA remains in force.", "predict": {"q": "Was IPRA struck down as unconstitutional for violating the Regalian Doctrine?", "options": ["Yes, it was struck down", "No, the petition was dismissed after a 7–7 tie"], "answer": 1}, "doctrine": "IPRA stands (petition dismissed on a 7–7 tie); ancestral domains held since time immemorial are linked to native title."}, "guido": {"id": "guido", "short": "Guido v. RPA", "year": 1949, "title": "Justa G. Guido v. Rural Progress Administration", "gr": "G.R. No. L-2089", "date": "October 31, 1949", "court": "En Banc", "url": "https://lawphil.net/judjuris/juri1949/oct1949/gr_l-2089_1949.html", "connection": "The case was decided in 1949, after the Commonwealth, but it interprets a Commonwealth statute (<span class=\"law\">CA 539<\/span>) and the 1935 Constitution. It is the clearest Supreme Court test of Commonwealth land-redistribution policy.", "facts": "The <span class=\"ag\">Rural Progress Administration<\/span>, acting under <span class=\"law\">CA 539 (1940)<\/span>, sought to expropriate Justa Guido's land: two adjoining lots, partly commercial, with a combined area of <b>22,655 sq m<\/b> in Maypajo, Caloocan, Rizal. It planned to subdivide the land and resell it to her tenants. Guido filed for prohibition.", "issue": "Does CA 539, read with <span class=\"law\">Art. XIII, Sec. 4 of the 1935 Constitution<\/span>, allow the expropriation of a relatively small, partly commercial property for resale to a few tenants?", "ruling": "<b>No. Petition granted.<\/b> The constitutional provision was aimed at <b>large landed estates and trusts in perpetuity<\/b>. Taking a small property for a few families is not <b>public use<\/b>. The Court held that social justice “does not champion division of property or equality of economic status”; it guarantees equality of opportunity and equality before the law.", "relevance": "Commonwealth-era land reform balanced social justice against property rights. Later cases moved away from <i>Guido<\/i>'s strict, area-based test: <i>J.M. Tuason v. LTA<\/i> (1970) departed from it, and <i>Sumulong v. Guerrero<\/i> (1987) applied a “number of people benefited” test.", "remember": "Under the 1935 framework, expropriation for resale was meant for LARGE estates, not small properties.", "predict": {"q": "Could the RPA expropriate Guido's 2.27-hectare, partly commercial lot to resell it to a few tenants?", "options": ["Yes, social justice allows it", "No, it is not public use; the power was meant for large estates"], "answer": 1}, "doctrine": "Expropriation for resale under the 1935 Constitution was meant for large estates; taking a small lot for a few families is not public use."}, "krivenko": {"id": "krivenko", "short": "Krivenko v. Register of Deeds", "year": 1947, "title": "Alexander A. Krivenko v. The Register of Deeds, City of Manila", "gr": "G.R. No. L-630", "date": "November 15, 1947", "court": "En Banc", "url": "https://lawphil.net/judjuris/juri1947/nov1947/gr_l-630_1947.html", "facts": "Alexander Krivenko, an alien, bought a residential lot from Magdalena Estate, Inc. in December 1941, but the war interrupted its registration. In May 1945, the <span class=\"ag\">Register of Deeds of Manila<\/span> refused to register the sale because Krivenko was an alien. The CFI upheld the refusal. While his appeal was pending, a Department of Justice circular told registers of deeds to accept such transfers, and Krivenko moved to withdraw his appeal. The Court refused and ruled on the merits.", "issue": "May an alien acquire residential land under the 1935 Constitution?", "ruling": "<b>No. Judgment affirmed.<\/b> “Agricultural land” in Art. XIII <b>includes residential land<\/b>. Sec. 5 allows private agricultural land to be transferred only to persons qualified to acquire public land. Aliens therefore cannot acquire private or public agricultural land, including residential land. They may, however, <b>lease<\/b> it.", "relevance": "This was a post-war land administration case: a sale interrupted by the war, and the <span class=\"ag\">Register of Deeds<\/span> acting as gatekeeper of the constitutional limits on ownership. It made the <b>Filipino-only rule for land<\/b> firm in the new Republic.", "remember": "Aliens may lease but not own Philippine land (today's exception: hereditary succession, Art. XII, Sec. 7).", "predict": {"q": "Could Krivenko, an alien, register his purchase of a residential lot?", "options": ["Yes, the constitutional ban covers only farmland", "No, 'agricultural land' includes residential land"], "answer": 1}, "doctrine": "Aliens cannot acquire private or public agricultural land, which includes residential land; they may only lease."}, "tuason": {"id": "tuason", "short": "J.M. Tuason v. LTA", "year": 1970, "title": "J.M. Tuason & Co., Inc. v. The Land Tenure Administration, et al.", "gr": "G.R. No. L-21064", "date": "February 18, 1970", "court": "En Banc", "url": "https://lawphil.net/judjuris/juri1970/feb1970/gr_21064_1970.html", "facts": "<span class=\"law\">RA 2616<\/span>, which took effect on <span class=\"dt\">August 3, 1959<\/span> without executive approval, authorized the expropriation of the <b>Tatalon Estate<\/b> in Quezon City (about 109 ha, part of the Sta. Mesa Heights Subdivision) for subdivision and resale to its occupants through the <span class=\"ag\">Land Tenure Administration<\/span>. The CFI, relying on <i>Guido<\/i> and <i>Republic v. Baylosis<\/i>, declared the law unconstitutional. The LTA appealed.", "issue": "Is RA 2616, a law ordering the expropriation of a specific private estate for resale to its occupants, a valid exercise of Congress's power under <span class=\"law\">Art. XIII, Sec. 4 of the 1935 Constitution<\/span>?", "ruling": "<b>Yes.<\/b> The Court reversed the lower court and denied the petition for prohibition. The Constitution must be read in light of <b>social justice<\/b> and future needs, and courts should not strike down social legislation by insisting narrowly on the primacy of property rights. Petitioner did not sufficiently show that the law was unconstitutional.", "relevance": "This is the Third Republic landmark on land redistribution. It shows the <span class=\"ag\">LTA<\/span> at work and marks the shift <b>away from Guido's restrictive test<\/b> toward social justice (as later noted in <i>Sumulong v. Guerrero<\/i>).", "remember": "Third Republic land reform: Congress may expropriate a specific large estate for resale to its occupants.", "predict": {"q": "Did the Court uphold RA 2616, which expropriated the Tatalon Estate for resale to its occupants?", "options": ["Yes, it reversed the lower court and upheld the law", "No, it followed Guido and struck the law down"], "answer": 0}, "doctrine": "A statute expropriating a specific estate for resale to its occupants is valid; Art. XIII, Sec. 4 is read in light of social justice."}, "aslp": {"id": "aslp", "short": "Assoc. of Small Landowners v. Sec. of Agrarian Reform", "year": 1989, "title": "Association of Small Landowners in the Philippines, Inc. v. Hon. Secretary of Agrarian Reform", "gr": "G.R. No. 78742 (with G.R. Nos. 79310, 79744, 79777)", "date": "July 14, 1989", "court": "En Banc", "url": "https://lawphil.net/judjuris/juri1989/jul1989/gr_78742_1989.html", "facts": "Landowners filed consolidated petitions challenging the agrarian reform laws: <span class=\"law\">PD 27<\/span> (1972), <span class=\"law\">Proclamation No. 131<\/span>, <span class=\"law\">EO 228<\/span> and <span class=\"law\">EO 229<\/span> (1987), and <span class=\"law\">RA 6657<\/span> (1988). They raised due process, retention rights, separation of powers, and above all the payment of <b>just compensation partly in Land Bank bonds<\/b> instead of cash.", "issue": "Are the agrarian reform laws constitutional, including the payment of just compensation partly in bonds?", "ruling": "<b>All were sustained.<\/b> CARP is a <b>“revolutionary kind of expropriation”<\/b> that covers all private agricultural land above the retention limits for the benefit of the whole nation, so payment partly in cash and partly in bonds is allowed. Setting retention limits is an exercise of <b>police power<\/b>; taking the excess is <b>eminent domain<\/b>. Title passes to the State <b>only upon full payment<\/b> of compensation. Rights acquired by tenants under PD 27 are kept, and landowners who could not use their PD 27 retention rights may use those under RA 6657.", "relevance": "This case bridges martial-law land reform (PD 27) and contemporary CARP (RA 6657). It is the foundation of today's agrarian land administration under DAR and the Land Bank.", "remember": "CARP is valid; just compensation may be partly in bonds; title transfers only upon full payment.", "predict": {"q": "May just compensation under CARP be paid partly in Land Bank bonds instead of all in cash?", "options": ["Yes, CARP is a 'revolutionary kind of expropriation'", "No, just compensation must always be paid in cash"], "answer": 0}, "doctrine": "CARP is a 'revolutionary kind of expropriation'; payment partly in bonds is valid; title passes only upon full payment."}, "oposa": {"id": "oposa", "short": "Oposa v. Factoran", "year": 1993, "title": "Juan Antonio Oposa, et al. v. Hon. Fulgencio S. Factoran, Jr. (Secretary of DENR), et al.", "gr": "G.R. No. 101083", "date": "July 30, 1993", "court": "En Banc", "url": "https://lawphil.net/judjuris/juri1993/jul1993/gr_101083_1993.html", "facts": "A group of minors, represented by their parents and joined by the Philippine Ecological Network, filed a class suit for themselves and for <b>generations yet unborn<\/b>. They asked the DENR Secretary to <b>cancel all existing timber license agreements (TLAs)<\/b> and stop issuing new ones, citing rapid deforestation. The RTC dismissed the case for lack of a cause of action and as a political question.", "issue": "Do the petitioners have a cause of action, and standing, to sue for the protection of the country's forests on behalf of present and future generations?", "ruling": "<b>Yes. Petition granted<\/b>; the dismissal was set aside. The right to a <b>balanced and healthful ecology<\/b> (<span class=\"law\">Art. II, Sec. 16<\/span>) is enforceable, and the minors could sue based on <b>intergenerational responsibility<\/b>. A timber license <b>is not a contract<\/b> protected by the non-impairment clause; it may be revoked when the public interest requires.", "relevance": "This is the core principle of sustainable land management: the State manages forest land and natural resources as a <b>trustee for present and future generations<\/b>. Permits to use public land are privileges, not property rights.", "remember": "Intergenerational responsibility; licenses to use public resources can be revoked for the public good.", "predict": {"q": "Can minors sue for themselves and for generations yet unborn to stop the destruction of forests?", "options": ["Yes, based on intergenerational responsibility", "No, it is a political question for Congress"], "answer": 0}, "doctrine": "The right to a balanced and healthful ecology is enforceable; intergenerational responsibility; timber licenses are not contracts."}, "ros": {"id": "ros", "short": "Ros v. DAR", "year": 2005, "title": "Jose Luis Ros, et al. v. Department of Agrarian Reform, et al.", "gr": "G.R. No. 132477", "date": "August 31, 2005", "court": "Second Division", "url": "https://lawphil.net/judjuris/juri2005/aug2005/gr_132477_2005.html", "connection": "No landmark case is about “agricultural productivity” as such. <i>Ros<\/i> is the closest legally relevant case: it upholds the legal safeguard that keeps productive farmland from being converted too easily.", "facts": "Petitioners, owners and developers including the Aboitiz family and Cebu Industrial Park Developers, owned land in Arpili, Balamban, Cebu. The land was reclassified as <b>industrial<\/b> by <span class=\"law\">Municipal Ordinance No. 101<\/span>, passed on <span class=\"dt\">March 25, 1992<\/span>, which the Cebu Provincial Board adopted on <span class=\"dt\">April 3, 1995<\/span>. Even though they held permits, <span class=\"ag\">DAR<\/span> Region 7 <b>disallowed the conversion<\/b> and ordered them to stop development. Their suit for injunction was dismissed by the RTC for lack of jurisdiction, and the CA affirmed.", "issue": "Does an LGU's reclassification of agricultural land, made after CARL took effect, remove the need for DAR conversion approval? May the courts stop DAR?", "ruling": "<b>No. Petition denied.<\/b> DAR's authority to approve conversions, which it may exercise from <span class=\"dt\">June 15, 1988<\/span>, was <b>not removed by the Local Government Code<\/b>; Sec. 20(e) expressly preserves RA 6657. Land reclassified after that date <b>must still go through DAR conversion<\/b> before it is used for other purposes. Under the doctrine of primary jurisdiction, and <span class=\"law\">RA 6657, Sec. 68<\/span> (no injunctions against DAR), the courts could not intervene.", "relevance": "The conversion requirement is a gatekeeper for agricultural productivity and food security. It keeps farmland from being lost through LGU reclassification alone.", "remember": "LGU reclassification is not conversion. Agricultural land reclassified after June 15, 1988 still needs DAR conversion clearance.", "predict": {"q": "After Balamban reclassified the land as industrial, did the owners still need DAR's conversion approval?", "options": ["No, LGU reclassification is enough", "Yes, DAR conversion is still required"], "answer": 1}, "doctrine": "LGU reclassification does not replace DAR conversion; land reclassified after June 15, 1988 needs DAR approval."}, "sumulong": {"id": "sumulong", "short": "Sumulong v. Guerrero", "year": 1987, "title": "Lorenzo Sumulong and Emilia Vidanes-Balaoing v. Hon. Buenaventura Guerrero and National Housing Authority", "gr": "G.R. No. L-48685", "date": "September 30, 1987", "court": "En Banc", "url": "https://lawphil.net/judjuris/juri1987/sep1987/gr_l-48685_1987.html", "facts": "In 1977, the <span class=\"ag\">NHA<\/span> filed to expropriate about <b>25 ha in Antipolo, Rizal<\/b> for a <b>socialized housing<\/b> project under <span class=\"law\">PD 1224<\/span>. The land included petitioners' lots of 6,667 sq m and 3,333 sq m. NHA valued the land at <b>₱1 per sq m<\/b>, based on the assessor's market value, and the judge issued a writ of possession <b>without notice or hearing<\/b> after NHA's deposit.", "issue": "Is expropriation for “socialized housing” a public use? Were the decree's rules on valuation and immediate possession valid?", "ruling": "<b>Socialized housing is public use.<\/b> Housing is a basic human need, and housing shortages affect public health, safety, and the general welfare. The test is <b>the number of people benefited, not the size of the land<\/b>, departing from <i>Guido<\/i> and following <i>J.M. Tuason<\/i>. However, the decree's rules fixing just compensation by the assessor's value are <b>unconstitutional<\/b> because <b>just compensation is a judicial function<\/b>, and the writ of possession issued without notice and hearing violated due process. The orders were annulled and the case remanded to determine compensation.", "relevance": "Government may acquire land to develop settlements for the homeless, but it must observe due process and pay just compensation fixed by the courts.", "remember": "Housing is public use; just compensation is fixed by the courts.", "predict": {"q": "Is taking private land for a socialized housing project a valid 'public use'?", "options": ["Yes, housing is a basic need that serves the general welfare", "No, only a few qualified families will benefit"], "answer": 0}, "doctrine": "Socialized housing is public use (the number-of-beneficiaries test), but just compensation is for the courts to determine."}, "yap": {"id": "yap", "short": "Sec. of DENR v. Yap (Boracay)", "year": 2008, "title": "The Secretary of the Department of Environment and Natural Resources, et al. v. Mayor Jose S. Yap, et al.; Dr. Orlando Sacay, et al. v. The Secretary of DENR, et al.", "gr": "G.R. No. 167707 and G.R. No. 173775", "date": "October 8, 2008", "court": "En Banc", "url": "https://lawphil.net/judjuris/juri2008/oct2008/gr_167707_2008.html", "facts": "In 1978, President Marcos issued <span class=\"law\">Proclamation No. 1801<\/span>, declaring Boracay (with other islands) a <b>tourist zone and marine reserve<\/b> under the Philippine Tourism Authority. Claimants led by Mayor Yap, who said they had possessed their land since June 12, 1945 or earlier, sought a declaration that the proclamation did not block their titling. The RTC and CA ruled for them. While the case was pending, President Arroyo issued <span class=\"law\">Proclamation No. 1064 (May 22, 2006)<\/span>, classifying Boracay into <b>400 ha of reserved forest land<\/b> and <b>628.96 ha of agricultural (A&D) land<\/b>. Another group (Sacay et al.) challenged it as violating their vested rights.", "issue": "Was Boracay alienable and disposable before Proclamation No. 1064, so that its occupants could obtain titles by judicial confirmation? Is Proclamation No. 1064 valid?", "ruling": "Before 2006, Boracay was <b>unclassified public land<\/b>, treated as public forest under <span class=\"law\">PD 705<\/span>. Proclamation No. 1801 <b>was not the positive act<\/b> needed to classify it as A&D, because declaring a tourist zone and marine reserve does not make land alienable. A <b>positive act<\/b> (a proclamation, executive order, administrative action, statute, or certification) is required, and “matters of land classification … cannot be assumed.” <b>Proclamation No. 1064 is valid.<\/b> The CA decision was reversed and the Sacay petition dismissed. The Court noted that claimants could still pursue other modes, such as a homestead or sales patent, or relief from Congress.", "relevance": "This is the leading case on proclamations and reserves. What a proclamation does depends on its terms: <b>a reservation for tourism is not a classification as A&D<\/b>, and reserved forest portions stay inalienable.", "remember": "Without a positive act classifying land as A&D, there is no private title, however long the possession.", "predict": {"q": "Did Proclamation No. 1801 (tourist zone and marine reserve) make Boracay alienable and disposable?", "options": ["Yes, tourist zones are open to private ownership", "No, it was not a positive act of A&D classification"], "answer": 1}, "doctrine": "A tourist-zone or marine-reserve proclamation is not A&D classification; a positive act is required (Boracay)."}}, "caseList": [{"id": "chavez", "short": "Chavez v. PEA", "year": 2002, "doctrine": "Private corporations may only lease, not own, alienable public lands; the right to information covers ongoing negotiations."}, {"id": "cruz", "short": "Cruz v. DENR", "year": 2000, "doctrine": "IPRA stands (petition dismissed on a 7–7 tie); ancestral domains held since time immemorial are linked to native title."}, {"id": "guido", "short": "Guido v. RPA", "year": 1949, "doctrine": "Expropriation for resale under the 1935 Constitution was meant for large estates; taking a small lot for a few families is not public use."}, {"id": "krivenko", "short": "Krivenko v. Register of Deeds", "year": 1947, "doctrine": "Aliens cannot acquire private or public agricultural land, which includes residential land; they may only lease."}, {"id": "tuason", "short": "J.M. Tuason v. LTA", "year": 1970, "doctrine": "A statute expropriating a specific estate for resale to its occupants is valid; Art. XIII, Sec. 4 is read in light of social justice."}, {"id": "aslp", "short": "Assoc. of Small Landowners v. Sec. of Agrarian Reform", "year": 1989, "doctrine": "CARP is a 'revolutionary kind of expropriation'; payment partly in bonds is valid; title passes only upon full payment."}, {"id": "oposa", "short": "Oposa v. Factoran", "year": 1993, "doctrine": "The right to a balanced and healthful ecology is enforceable; intergenerational responsibility; timber licenses are not contracts."}, {"id": "ros", "short": "Ros v. DAR", "year": 2005, "doctrine": "LGU reclassification does not replace DAR conversion; land reclassified after June 15, 1988 needs DAR approval."}, {"id": "sumulong", "short": "Sumulong v. Guerrero", "year": 1987, "doctrine": "Socialized housing is public use (the number-of-beneficiaries test), but just compensation is for the courts to determine."}, {"id": "yap", "short": "Sec. of DENR v. Yap (Boracay)", "year": 2008, "doctrine": "A tourist-zone or marine-reserve proclamation is not A&D classification; a positive act is required (Boracay)."}], "quiz": [{"s": "lg", "q": "Which constitutional provision embodies the Regalian Doctrine?", "c": ["Art. XII, Sec. 2", "Art. XIII, Sec. 4", "Art. III, Sec. 7", "Art. X, Sec. 20"], "a": 0, "e": "Art. XII, Sec. 2: all lands of the public domain and natural resources are owned by the State."}, {"s": "lg", "q": "Under the 1987 Constitution, a private corporation may hold alienable lands of the public domain only by:", "c": ["Purchase of up to 12 ha", "Lease of up to 1,000 ha for 25 years, renewable for 25", "Homestead of up to 24 ha", "Grant from the President"], "a": 1, "e": "Art. XII, Sec. 3: corporations may only lease, up to 1,000 ha, for 25 + 25 years."}, {"s": "lg", "q": "Land governance is BEST described as:", "c": ["Technical measurement of land parcels", "The rules, processes and structures for deciding access to and use of land, and managing competing interests", "Collection of real property taxes", "Agricultural extension services"], "a": 1, "e": "This is the FAO definition. Surveying and taxation are parts of land administration."}, {"s": "lg", "q": "In Chavez v. PEA, the right to information was held to cover:", "c": ["Only final, signed contracts", "Ongoing negotiations once there are definite propositions", "Closed-door Cabinet deliberations", "Nothing involving land deals"], "a": 1, "e": "The Court held that the right covers ongoing negotiations once there are definite propositions, subject to exceptions."}, {"s": "lg", "q": "Which agency issues Certificates of Ancestral Domain Title (CADTs)?", "c": ["DENR-LMB", "LRA", "NCIP", "DAR"], "a": 2, "e": "NCIP, created by IPRA (RA 8371), recognizes ancestral domains and lands."}, {"s": "lg", "q": "Which office registers Torrens titles and issues OCTs and TCTs?", "c": ["Registry of Deeds under the LRA", "CENRO", "DHSUD", "NAMRIA"], "a": 0, "e": "The LRA and the Registries of Deeds administer the Torrens system under PD 1529."}, {"s": "pre", "q": "The basic political unit of pre-colonial communities was the:", "c": ["Encomienda", "Barangay", "Hacienda", "Municipio"], "a": 1, "e": "The barangay, led by a datu, managed its territory and resources."}, {"s": "pre", "q": "“Usufruct” in pre-colonial land use means:", "c": ["Absolute and exclusive ownership", "The right to use land and enjoy its fruits while the community keeps ultimate control", "A lease paid in gold", "A title issued by the datu"], "a": 1, "e": "Families cultivated and harvested, but the community kept ultimate control."}, {"s": "pre", "q": "Cariño v. Insular Government (1909), the root of 'native title,' was decided by the:", "c": ["Philippine Supreme Court", "U.S. Supreme Court", "Court of Land Registration", "Real Audiencia"], "a": 1, "e": "It was decided by the U.S. Supreme Court on appeal from the Philippines, which makes it a common exam trap."}, {"s": "pre", "q": "What was the outcome of Cruz v. Secretary of DENR (2000)?", "c": ["IPRA was declared unconstitutional", "The petition was dismissed after a 7–7 vote, so IPRA stayed in force", "IPRA was partly struck down", "The case was dismissed as moot"], "a": 1, "e": "The vote was 7–7 even after redeliberation, so the petition was dismissed under Rule 56, Sec. 7."}, {"s": "pre", "q": "Which statement about pre-colonial land administration is MOST accurate?", "c": ["It used Torrens titles", "It relied on cadastral surveys", "Rights were recognized through custom, use, occupation, and inheritance", "All land belonged to the Spanish Crown"], "a": 2, "e": "There were no titles or surveys; rights rested on custom and community recognition."}, {"s": "cw", "q": "The main public land law enacted during the Commonwealth, which is still in force, is:", "c": ["Act 496", "CA 141", "PD 1529", "RA 6657"], "a": 1, "e": "CA 141, the Public Land Act of November 7, 1936."}, {"s": "cw", "q": "Under the 1935 Constitution and CA 141, the maximum area for a homestead was:", "c": ["12 ha", "24 ha", "144 ha", "1,024 ha"], "a": 1, "e": "It was 24 ha then. Under the 1987 Constitution, the limit for purchase, homestead, or grant is 12 ha."}, {"s": "cw", "q": "Under CA 141, Sec. 6, public lands are classified by:", "c": ["Congress", "The President, upon the Secretary's recommendation", "The Director of Lands alone", "The Supreme Court"], "a": 1, "e": "Classification is an executive function of the President, upon the Secretary's recommendation."}, {"s": "cw", "q": "The National Land Settlement Administration (CA 441, 1939) is associated with the settlement of:", "c": ["Central Luzon haciendas", "The Koronadal and Allah Valleys in Mindanao", "Metro Manila slums", "The Cordillera rice terraces"], "a": 1, "e": "The NLSA under Gen. Paulino Santos settled the Koronadal and Allah Valleys; General Santos City is named after him."}, {"s": "cw", "q": "In Guido v. RPA (1949), the Court held that:", "c": ["Any land may be expropriated for social justice", "Expropriating a small, partly commercial property for a few tenants is not public use", "The RPA was unconstitutional", "Commercial land is exempt from all expropriation"], "a": 1, "e": "The 1935 provision was meant for large estates; taking a small lot for a few families is not public use."}, {"s": "cw", "q": "The Rural Progress Administration was created by:", "c": ["CA 141", "EO 191 (1939)", "RA 1400", "PD 27"], "a": 1, "e": "EO 191 (March 2, 1939), issued under CA 378. It was abolished by EO 376 (1950)."}, {"s": "ww2", "q": "RA 26 (1946) provides for:", "c": ["Agrarian reform", "Reconstitution of lost or destroyed Torrens titles", "The 70–30 crop-sharing arrangement", "The creation of NARRA"], "a": 1, "e": "Many titles were destroyed in the war, and RA 26 set a special procedure to reconstitute them."}, {"s": "ww2", "q": "RA 34 (1946), under President Roxas, is known for:", "c": ["The 70–30 crop-sharing arrangement in favor of tenants", "Creating DAR", "The Torrens system", "Abolishing share tenancy"], "a": 0, "e": "RA 34 amended the Rice Share Tenancy Act to give tenants 70% under certain conditions."}, {"s": "ww2", "q": "Krivenko v. Register of Deeds (1947) held that:", "c": ["Aliens may buy residential land", "'Agricultural land' includes residential land, so aliens cannot acquire it", "Only Americans may buy land under parity rights", "Registers of Deeds have no discretion"], "a": 1, "e": "Aliens cannot acquire private agricultural land, which includes residential land; they may lease."}, {"s": "ww2", "q": "EDCOR (1950) was mainly established to:", "c": ["Survey Metro Manila", "Resettle surrendered Huk members and other settlers in agricultural communities", "Register titles", "Run timber concessions"], "a": 1, "e": "EDCOR, under Ramon Magsaysay, combined counter-insurgency with resettlement, for example in Kapatagan, Lanao."}, {"s": "ww2", "q": "Which agency replaced the NLSA in 1950?", "c": ["NARRA", "LASEDECO", "LTA", "DAR"], "a": 1, "e": "EO 355 (1950) created LASEDECO. NARRA (RA 1160) replaced LASEDECO in 1954."}, {"s": "tr", "q": "The Third Republic covers:", "c": ["1935–1946", "1946–1972", "1973–1986", "1987–present"], "a": 1, "e": "It began on July 4, 1946 and ended with Martial Law in 1972 (the 1973 Constitution followed). Today is the Fifth Republic."}, {"s": "tr", "q": "The present period of Philippine government is the:", "c": ["Third Republic", "Fourth Republic", "Fifth Republic", "Commonwealth"], "a": 2, "e": "The Fifth Republic, under the 1987 Constitution."}, {"s": "tr", "q": "RA 3844 (1963), the Agricultural Land Reform Code, is known for:", "c": ["Abolishing share tenancy and creating the Land Bank", "Creating the Torrens system", "Establishing IPRA", "Creating DHSUD"], "a": 0, "e": "It shifted tenants to leasehold, created the Land Bank and Land Authority, and set a 75-ha retention limit."}, {"s": "tr", "q": "The Department of Agrarian Reform was created by:", "c": ["RA 1400", "RA 6389 (1971)", "PD 27", "RA 6657"], "a": 1, "e": "RA 6389, the Code of Agrarian Reforms (Sept. 10, 1971)."}, {"s": "tr", "q": "In Association of Small Landowners v. Sec. of Agrarian Reform (1989), CARP was described as:", "c": ["An ordinary expropriation payable only in cash", "A 'revolutionary kind of expropriation'", "An invalid police-power measure", "A tax measure"], "a": 1, "e": "Because of its nationwide scope, payment partly in bonds was allowed. Title passes only upon full payment."}, {"s": "tr", "q": "J.M. Tuason & Co. v. LTA (1970) involved the expropriation of the:", "c": ["Hacienda Luisita", "Tatalon Estate, Quezon City", "Freedom Islands", "Boracay Island"], "a": 1, "e": "RA 2616 authorized it, and the Court upheld the law, departing from Guido."}, {"s": "tr", "q": "Under RA 11573 (2021), judicial confirmation of title requires possession of A&D land for at least:", "c": ["Since July 26, 1894", "30 years", "Since June 12, 1945", "20 years before filing"], "a": 3, "e": "RA 11573 now requires 20 years of possession, for up to 12 ha, with the DENR geodetic engineer's certification on the survey plan as proof of A&D status."}, {"s": "tr", "q": "PD 1529 (1978) is the:", "c": ["Revised Forestry Code", "Property Registration Decree", "Agrarian reform decree", "Public Land Act"], "a": 1, "e": "PD 1529 codified the Torrens registration system."}, {"s": "lm", "q": "Under the 1987 Constitution, lands of the public domain are classified into:", "c": ["Agricultural, residential, commercial, industrial", "Agricultural, forest or timber, mineral, national parks", "Public, private, patrimonial, communal", "Alienable, inalienable, reserved, ancestral"], "a": 1, "e": "Art. XII, Sec. 3. Only agricultural lands may be alienated."}, {"s": "lm", "q": "Once Congress fixes the limits of forest lands and national parks, these may be changed only:", "c": ["By presidential proclamation", "By DENR order", "By law", "By LGU ordinance"], "a": 2, "e": "Art. XII, Sec. 4: they may not be increased or diminished except by law."}, {"s": "lm", "q": "Under PD 705, public land with a slope of ____ or more cannot be classified as A&D.", "c": ["8%", "18%", "30%", "50%"], "a": 1, "e": "PD 705, Sec. 15: 18%. Forest land at 50% slope or more cannot be used for grazing."}, {"s": "lm", "q": "The doctrine of 'intergenerational responsibility' comes from:", "c": ["Chavez v. PEA", "Oposa v. Factoran", "Krivenko", "Ros v. DAR"], "a": 1, "e": "Oposa v. Factoran (1993): the minors sued for themselves and for generations yet unborn."}, {"s": "lm", "q": "EO 72 provides for the preparation of:", "c": ["Torrens titles", "LGU Comprehensive Land Use Plans", "CADTs", "Emancipation Patents"], "a": 1, "e": "EO 72 was issued on March 25, 1993, pursuant to the 1991 Local Government Code."}, {"s": "lm", "q": "'Ridge to reef' land management means:", "c": ["Managing only coastal zones", "Managing uplands, lowlands, coasts, and seas as one connected system", "Prioritizing mining", "Titling every mountain"], "a": 1, "e": "It is an integrated, landscape-wide approach."}, {"s": "ap", "q": "Under RA 7160, Sec. 20, a component city may reclassify up to what share of its agricultural land?", "c": ["5%", "10%", "15%", "20%"], "a": 1, "e": "The caps are 15% for highly urbanized and independent component cities; 10% for component cities and 1st–3rd class municipalities; and 5% for 4th–6th class municipalities."}, {"s": "ap", "q": "Ros v. DAR (2005) held that agricultural land reclassified by an LGU after June 15, 1988:", "c": ["Is automatically non-agricultural", "Still needs DAR conversion approval", "Is exempt from CARP", "Needs only an LGU permit"], "a": 1, "e": "LGU reclassification is not conversion, and the LGC preserves DAR's authority."}, {"s": "ap", "q": "Which agency approves the conversion of agricultural land to non-agricultural uses?", "c": ["DENR", "DAR", "DHSUD", "DA"], "a": 1, "e": "DAR, under RA 6657, Sec. 65 and EO 129-A."}, {"s": "ap", "q": "The SAFDZs (Strategic Agriculture and Fisheries Development Zones) were created under:", "c": ["RA 8435 (AFMA)", "RA 7279", "PD 957", "RA 11201"], "a": 0, "e": "AFMA (1997) identifies zones to be kept for agriculture and fisheries."}, {"s": "ap", "q": "Which factors drive the zonification of crop lands?", "c": ["Accessibility and compatibility", "Geomorphology, topography (slope), and soil characteristics", "Isolation and connectivity", "Hazard-free location only"], "a": 1, "e": "Crop lands are 'driven by nature.' Accessibility is the factor for institutional and business zones."}, {"s": "sd", "q": "Sumulong v. Guerrero (1987) held that expropriation for socialized housing:", "c": ["Is not public use", "Is public use, but just compensation must be fixed by the courts", "Needs no compensation", "Is allowed only for large estates"], "a": 1, "e": "Housing is public use (the number-of-beneficiaries test), and just compensation is a judicial function."}, {"s": "sd", "q": "The Urban Development and Housing Act is:", "c": ["RA 7279 (1992)", "RA 7160 (1991)", "PD 957 (1976)", "RA 11201 (2019)"], "a": 0, "e": "UDHA, RA 7279, governs socialized housing and humane relocation."}, {"s": "sd", "q": "Under UDHA, the FIRST priority in acquiring land for socialized housing is:", "c": ["Privately owned land", "Land owned by the government and its agencies", "Idle land", "BLISS sites"], "a": 1, "e": "Government-owned land comes first; privately owned land comes last."}, {"s": "sd", "q": "Under UDHA, expropriation for socialized housing is:", "c": ["The first mode used", "A last resort, after other modes are exhausted", "Prohibited", "Allowed only in Metro Manila"], "a": 1, "e": "Other modes, such as community mortgage, land swapping, and negotiated purchase, come first."}, {"s": "sd", "q": "Under RA 10023, a residential free patent in a highly urbanized city may cover up to:", "c": ["200 sq m", "500 sq m", "750 sq m", "1,000 sq m"], "a": 0, "e": "The limits are 200 sq m in HUCs, 500 in other cities, 750 in 1st–2nd class municipalities, and 1,000 elsewhere."}, {"s": "pr", "q": "Under CA 141, Sec. 88, land reserved by proclamation is:", "c": ["Open to homestead", "Non-alienable and not subject to occupation, entry, sale, or lease until declared alienable again", "Automatically titled to the occupant", "Transferred to the LGU"], "a": 1, "e": "Reserved tracts are taken out of commerce until released."}, {"s": "pr", "q": "Proclamation No. 1801 (1978) declared Boracay a:", "c": ["National park", "Tourist zone and marine reserve", "Military reservation", "A&D land"], "a": 1, "e": "Yap held that this was NOT a classification of the island as A&D."}, {"s": "pr", "q": "Proclamation No. 1064 (2006) classified Boracay into:", "c": ["All forest land", "About 400 ha of reserved forest land and 628.96 ha of A&D land", "All A&D land", "A protected seascape"], "a": 1, "e": "The Court upheld it in Sec. of DENR v. Yap (2008)."}, {"s": "pr", "q": "Mount Apo was first reserved as a national park by:", "c": ["RA 9237 (2004)", "Proclamation No. 59 (1936)", "PD 705 (1975)", "Proclamation No. 882 (1996)"], "a": 1, "e": "Proc. 59 (May 9, 1936) came first; Proc. 882 (1996) made it a natural park, and RA 9237 (2004) set it by law."}, {"s": "pr", "q": "The President's power to reserve public land for specific public purposes is found in:", "c": ["EO 292, Book III, Sec. 14", "RA 7160, Sec. 20", "PD 1529, Sec. 14", "Art. III, Sec. 7"], "a": 0, "e": "The Administrative Code of 1987; CA 141, Sec. 83 is also a basis."}, {"s": "pr", "q": "In Sec. of DENR v. Yap, what is needed to make land alienable and disposable?", "c": ["Long possession alone", "Tax declarations", "A positive act of government, such as a proclamation, EO, statute, or certification", "An LGU zoning ordinance"], "a": 2, "e": "Matters of land classification cannot be assumed; they must be proven by a positive act."}], "flash": [["Regalian Doctrine", "The State owns all lands of the public domain and natural resources (Art. XII, Sec. 2). Land not shown to be private is presumed public."], ["Native title", "Land held since time immemorial under a claim of private ownership is presumed never to have been public land (Cariño, 1909; recognized in IPRA)."], ["Usufruct", "The right to use land and enjoy its fruits without absolute ownership. This was the common pre-colonial arrangement."], ["Datu", "The head of the barangay, who allocated land use, settled disputes, and protected communal resources."], ["A&D land", "Alienable and disposable land: public agricultural land that the government has classified as open to private acquisition."], ["Four classes of public land (1987)", "Agricultural, forest or timber, mineral, and national parks. Only agricultural land is alienable."], ["1987 Constitution land limits", "Citizens: acquire up to 12 ha or lease up to 500 ha. Corporations: lease only, up to 1,000 ha, for 25 + 25 years."], ["1935 Constitution land limits", "Corporations: 1,024 ha. Individuals: 144 ha by purchase, 1,024 ha by lease, 24 ha by homestead. Grazing leases: up to 2,000 ha."], ["Act 496 (1902)", "The Land Registration Act, which introduced the Torrens system."], ["CA 141 (1936)", "The Public Land Act: classification and disposition of public land (homestead, sale, lease, confirmation of title)."], ["CA 141, Sec. 88", "Land reserved by proclamation is non-alienable and not subject to occupation, entry, sale, or lease until released."], ["CA 539 (1940)", "Authorized the President, through the RPA, to acquire private lands for resale in small lots. Tested in Guido v. RPA."], ["CA 441 (1939)", "Created the NLSA, which settled the Koronadal and Allah Valleys under Gen. Paulino Santos."], ["RA 26 (1946)", "Reconstitution of lost or destroyed Torrens titles after the war."], ["RA 34 (1946)", "The 70–30 crop-sharing arrangement in favor of tenants (Roxas)."], ["RA 1160 (1954)", "Created NARRA (resettlement and rehabilitation), replacing LASEDECO."], ["RA 1199 (1954)", "The Agricultural Tenancy Act: share and leasehold tenancy, security of tenure."], ["RA 1400 (1955)", "The Land Reform Act: created the LTA to acquire estates above 300 ha (individuals) or 600 ha (corporations)."], ["RA 3844 (1963)", "The Agricultural Land Reform Code: abolished share tenancy (leasehold), created the Land Bank, set a 75-ha retention limit."], ["RA 6389 (1971)", "The Code of Agrarian Reforms, which created the Department of Agrarian Reform."], ["PD 27 (1972)", "Operation Land Transfer for rice and corn lands: 3 ha irrigated or 5 ha unirrigated; CLT, then Emancipation Patent."], ["PD 705 (1975)", "The Revised Forestry Code: no A&D classification at 18% slope or more; unclassified land is public forest."], ["PD 1073 (1977)", "Judicial confirmation requires possession since June 12, 1945."], ["PD 1529 (1978)", "The Property Registration Decree, which codified the Torrens system."], ["RA 6657 (1988)", "CARL: covers all agricultural lands regardless of crop; effective June 15, 1988; 5-ha retention."], ["RA 7160, Sec. 20", "LGU reclassification caps: 15% (HUC and ICC), 10% (component city, 1st–3rd class), 5% (4th–6th class)."], ["Reclassification vs. conversion", "Reclassification: the LGU designates future non-agricultural use. Conversion: DAR approval to actually change the use."], ["RA 7279 (1992)", "UDHA: socialized housing, priorities and modes of land acquisition, humane eviction."], ["RA 8371 (1997)", "IPRA: ancestral domains and lands, customary law, NCIP, CADT and CALT."], ["RA 11201 (2019)", "Created DHSUD from the HLURB and HUDCC."], ["RA 11573 (2021)", "Judicial confirmation and free patents: 20 years of possession, up to 12 ha. A DENR geodetic engineer's certification proves A&D status."], ["EO 192 (1987)", "Reorganized the DENR, including the Land Management Bureau and NAMRIA."], ["EO 72 (1993)", "Guidelines for LGU Comprehensive Land Use Plans."], ["Presidential proclamation", "An act of the President declaring a status or condition of public interest on which a law's operation depends (EO 292, Book III, Sec. 4)."], ["Third Republic", "July 4, 1946 to 1972 (Martial Law). It is NOT the present; the present is the Fifth Republic (1987 Constitution)."], ["Chavez v. PEA (2002)", "Corporations may only lease alienable public land; the right to information covers ongoing negotiations."], ["Cruz v. DENR (2000)", "IPRA challenge dismissed on a 7–7 vote, so IPRA stays in force."], ["Guido v. RPA (1949)", "Expropriation for resale is meant for large estates, not a small lot for a few tenants."], ["Krivenko (1947)", "Aliens cannot acquire residential land; 'agricultural land' includes residential land."], ["J.M. Tuason v. LTA (1970)", "Upheld the expropriation of the Tatalon Estate; social justice outweighs a narrow reading of property rights."], ["ASLP v. Sec. of Agrarian Reform (1989)", "CARP is a 'revolutionary kind of expropriation'; payment partly in bonds is allowed; title passes upon full payment."], ["Oposa v. Factoran (1993)", "Intergenerational responsibility; the right to a healthful ecology is enforceable; TLAs are not contracts."], ["Ros v. DAR (2005)", "LGU reclassification does not remove the DAR conversion requirement for land reclassified after June 15, 1988."], ["Sumulong v. Guerrero (1987)", "Socialized housing is public use; just compensation is judicial."], ["Sec. of DENR v. Yap (2008)", "Boracay: a tourist-zone proclamation is not A&D classification; a positive act is needed."]], "chrono": [["Spanish colonization begins (Legazpi)", 1565], ["Maura Law, the last chance to register Spanish titles", 1894], ["Land Registration Act (Act 496), Torrens system", 1902], ["First Public Land Act (Act 926)", 1903], ["Cadastral Act (Act 2259)", 1913], ["Second Public Land Act (Act 2874)", 1919], ["Commonwealth inaugurated under the 1935 Constitution", 1935], ["Public Land Act, CA 141", 1936], ["NLSA created (CA 441)", 1939], ["CA 539: acquisition of private lands for resale", 1940], ["Philippine independence and the start of the Third Republic", 1946], ["Krivenko v. Register of Deeds decided", 1947], ["Guido v. RPA decided", 1949], ["EDCOR and LASEDECO established", 1950], ["NARRA created (RA 1160)", 1954], ["Land Reform Act, RA 1400 (LTA)", 1955], ["Agricultural Land Reform Code, RA 3844", 1963], ["J.M. Tuason v. LTA decided", 1970], ["DAR created (RA 6389)", 1971], ["PD 27: Operation Land Transfer", 1972], ["Revised Forestry Code, PD 705", 1975], ["Property Registration Decree, PD 1529", 1978], ["1987 Constitution ratified", 1987], ["CARL, RA 6657", 1988], ["Association of Small Landowners decided", 1989], ["Local Government Code, RA 7160", 1991], ["UDHA, RA 7279", 1992], ["Oposa v. Factoran decided", 1993], ["IPRA, RA 8371", 1997], ["Cruz v. DENR (IPRA case) decided", 2000], ["Chavez v. PEA decided", 2002], ["Ros v. DAR decided", 2005], ["Boracay case (Sec. of DENR v. Yap) decided", 2008], ["DHSUD created (RA 11201)", 2019], ["RA 11573: 20-year rule for confirming titles", 2021], ["New Agrarian Emancipation Act, RA 11953", 2023]], "secPart": {"lg": "p1", "pre": "p2", "cw": "p2", "ww2": "p2", "tr": "p2", "lm": "p3", "ap": "p3", "sd": "p3", "pr": "p3"}, "secName": {"lg": "1 Land Governance", "pre": "2.1 Pre-colonial Land Administration", "cw": "2.2 Land Administration during the Commonwealth", "ww2": "2.3 Land Administration after World War II", "tr": "2.4 Land Administration during the Third Republic and the Contemporary Period", "lm": "3.1 Concept of Land Management in the Philippines", "ap": "3.2 Agricultural Productivity", "sd": "3.3 Settlement Development", "pr": "3.4 Proclamations and Reserve Areas"}, "sections": [{"id": "lg"}, {"id": "pre"}, {"id": "cw"}, {"id": "ww2"}, {"id": "tr"}, {"id": "lm"}, {"id": "ap"}, {"id": "sd"}, {"id": "pr"}], "myths": {"p2": {"s": "We are currently living in the Third Republic.", "fact": false, "e": "The Third Republic ran from 1946 to 1972. Today is the Fifth Republic, under the 1987 Constitution."}, "lg": {"s": "A private corporation may buy up to 12 hectares of alienable public land.", "fact": false, "e": "Under Art. XII, Sec. 3, corporations may only LEASE alienable public land (up to 1,000 ha). The 12-ha purchase limit is for citizens."}, "pre": {"s": "Cariño v. Insular Government was decided by the Philippine Supreme Court.", "fact": false, "e": "It was decided by the U.S. Supreme Court in 1909, on appeal from the Philippines."}, "cw": {"s": "CA 141, the Public Land Act of 1936, was repealed by the 1987 Constitution.", "fact": false, "e": "CA 141 is still the main public land law, as amended (most recently by RA 11573 in 2021)."}, "ww2": {"s": "RA 26 provides a special procedure to reconstitute Torrens titles that were lost or destroyed.", "fact": true, "e": "RA 26 (Sept. 25, 1946) was enacted because many titles were destroyed during the war."}, "tr": {"s": "The Department of Agrarian Reform was created by PD 27 under Martial Law.", "fact": false, "e": "DAR was created by RA 6389 in 1971, before Martial Law. PD 27 (1972) launched Operation Land Transfer."}, "lm": {"s": "Once Congress fixes the boundaries of a national park, the President may reduce it by proclamation.", "fact": false, "e": "Art. XII, Sec. 4: once fixed by law, forest lands and national parks may not be increased or diminished except by law."}, "ap": {"s": "Once a municipality reclassifies farmland as industrial, the owner can develop it right away without DAR.", "fact": false, "e": "Ros v. DAR: land reclassified after June 15, 1988 still needs DAR conversion approval."}, "sd": {"s": "Under UDHA, expropriation is the first mode the government uses to acquire land for socialized housing.", "fact": false, "e": "Expropriation is a last resort; community mortgage, land swapping, negotiated purchase, and other modes come first (RA 7279)."}, "pr": {"s": "An occupant may acquire reserved land through 30 years of open, continuous possession.", "fact": false, "e": "Reserved land is non-alienable and not subject to occupation or disposition until released (CA 141, Sec. 88)."}}}</script>
+<script>(() => {
+  const D = JSON.parse(document.getElementById("data").textContent);
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem("lgam:" + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+    set(k, v) { try { localStorage.setItem("lgam:" + k, JSON.stringify(v)); } catch (e) { /* storage unavailable */ } },
+  };
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
+
+  /* ---------- theme & recall mode ---------- */
+  const root = document.documentElement;
+  const savedTheme = store.get("theme", null);
+  if (savedTheme) root.dataset.theme = savedTheme;
+  $("#themeBtn").addEventListener("click", () => {
+    const cur = root.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    const next = cur === "dark" ? "light" : "dark";
+    root.dataset.theme = next; store.set("theme", next);
+  });
+  const recallBtn = $("#recallBtn");
+  recallBtn.addEventListener("click", () => {
+    const on = !document.body.classList.contains("recall");
+    document.body.classList.toggle("recall", on);
+    recallBtn.setAttribute("aria-pressed", on);
+    $$(".shown").forEach((e) => e.classList.remove("shown"));
+    hideTip();
+  });
+  document.addEventListener("click", (e) => {
+    if (!document.body.classList.contains("recall")) return;
+    const t = e.target.closest(".lesson .k, .lesson .law, .lesson .dt, .lesson .ag, .lesson .card");
+    if (t && !t.classList.contains("shown")) { t.classList.add("shown"); e.preventDefault(); e.stopPropagation(); }
+  }, true);
+
+  /* ---------- glossary tooltips ---------- */
+  const gk = Object.keys(D.glossary).map((k) => [k.toLowerCase(), k]);
+  $$(".lesson .k").forEach((k) => {
+    const t = k.textContent.trim().toLowerCase();
+    const m = gk.find(([lk]) => t === lk || t.includes(lk));
+    if (m) { k.dataset.tip = D.glossary[m[1]]; k.tabIndex = 0; }
+  });
+  const tip = $("#tip");
+  function showTip(t) {
+    if (document.body.classList.contains("recall") && !t.classList.contains("shown")) return;
+    tip.textContent = t.dataset.tip; tip.classList.add("on");
+    const r = t.getBoundingClientRect(), tw = tip.offsetWidth, th = tip.offsetHeight;
+    const x = Math.min(Math.max(8, r.left + r.width / 2 - tw / 2), innerWidth - tw - 8);
+    let y = r.top - th - 8; if (y < 64) y = r.bottom + 8;
+    tip.style.left = x + "px"; tip.style.top = y + "px";
+  }
+  function hideTip() { tip.classList.remove("on"); }
+  document.addEventListener("mouseover", (e) => { const t = e.target.closest("[data-tip]"); if (t) showTip(t); });
+  document.addEventListener("mouseout", (e) => { if (e.target.closest("[data-tip]")) hideTip(); });
+  document.addEventListener("focusin", (e) => { const t = e.target.closest("[data-tip]"); if (t) showTip(t); });
+  document.addEventListener("focusout", hideTip);
+  addEventListener("scroll", hideTip, { passive: true });
+
+  /* ---------- three Ls ---------- */
+  const seg = $("#seg"), segPanel = $("#segPanel");
+  D.threeLs.forEach((l, i) => {
+    const b = el("button", "", `${l.name}<small>${l.tag}</small>`);
+    b.setAttribute("role", "tab"); b.setAttribute("aria-selected", i === 0);
+    b.addEventListener("click", () => showL(i));
+    seg.appendChild(b);
+  });
+  function showL(i) {
+    $$("button", seg).forEach((b, j) => b.setAttribute("aria-selected", j === i));
+    const l = D.threeLs[i];
+    segPanel.innerHTML = `<div><b>Focus</b>${l.focus}</div><div><b>Key question</b>${l.question}</div><div><b>Philippine example</b>${l.example}</div>`;
+  }
+  showL(0);
+
+  /* ---------- era explorer ---------- */
+  $$('ol.timeline[data-tl="eras"]').forEach((ol) => {
+    const items = $$(".tl-item", ol).map((li) => ({ date: $(".tl-date", li).innerHTML, title: $(".tl-title", li).innerHTML, text: $(".tl-text", li).innerHTML }));
+    const box = el("div", "eras");
+    box.innerHTML = `<div class="era-track" role="tablist" aria-label="Historical periods">${items.map((it, i) =>
+      `<button role="tab" data-i="${i}" class="${/today/i.test(it.title) ? "today" : ""}">${it.title}<small>${it.date}</small></button>`).join("")}</div>
+      <div class="era-panel" aria-live="polite"></div>
+      <div class="era-nav"><button class="btn small" data-d="-1">← Earlier</button><button class="btn small" data-d="1">Later →</button></div>`;
+    ol.replaceWith(box);
+    const track = $(".era-track", box);
+    let cur = 0;
+    const show = (i) => {
+      cur = (i + items.length) % items.length;
+      const btns = $$(".era-track button", box);
+      btns.forEach((b, j) => b.setAttribute("aria-selected", j === cur));
+      const it = items[cur];
+      const badge = /today/i.test(it.title) ? '<span class="badge">Now</span>' : /Third Republic/.test(it.title) ? '<span class="badge warn">Not the present</span>' : "";
+      $(".era-panel", box).innerHTML = `<div class="ep-date">${it.date}</div><div class="ep-title">${it.title}${badge}</div><div class="ep-text">${it.text}</div>`;
+      const b = btns[cur]; track.scrollTo({ left: b.offsetLeft - track.clientWidth / 2 + b.offsetWidth / 2, behavior: "smooth" });
+    };
+    $$(".era-track button", box).forEach((b) => b.addEventListener("click", () => show(+b.dataset.i)));
+    $$(".era-nav button", box).forEach((b) => b.addEventListener("click", () => show(cur + +b.dataset.d)));
+    show(0);
+  });
+
+  /* ---------- myth or fact ---------- */
+  $$(".mf-slot").forEach((slot) => {
+    const m = D.myths[slot.dataset.m];
+    const box = el("div", "mf", `<div class="pill" style="display:inline-block;margin-bottom:8px">Myth or fact?</div>
+      <div class="mf-q">“${m.s}”</div><div class="row"><button class="btn small" data-v="0">Myth</button><button class="btn small" data-v="1">Fact</button></div><div class="fb"></div>`);
+    $$("button", box).forEach((b) => b.addEventListener("click", () => {
+      const ok = (+b.dataset.v === 1) === m.fact;
+      const fb = $(".fb", box);
+      fb.className = "fb show " + (ok ? "ok" : "bad");
+      fb.innerHTML = `<b>${ok ? "Correct!" : "Not quite."}</b> It's a <b>${m.fact ? "fact" : "myth"}</b>. ${m.e}`;
+    }));
+    slot.replaceWith(box);
+  });
+
+  /* ---------- quick-check question ---------- */
+  function buildQ(q, onAnswer) {
+    const order = shuffle(q.c.map((_, i) => i));
+    const d = el("div", "q", `<div class="q-t">${esc(q.q)}</div>${order.map((oi, pos) => `<button class="opt" data-i="${oi}">${String.fromCharCode(65 + pos)}. ${esc(q.c[oi])}</button>`).join("")}<div class="fb"></div>`);
+    $$(".opt", d).forEach((b) => b.addEventListener("click", () => {
+      const i = +b.dataset.i, ok = i === q.a;
+      $$(".opt", d).forEach((x) => { x.disabled = true; if (+x.dataset.i === q.a) x.classList.add("right"); });
+      if (!ok) b.classList.add("wrong");
+      const fb = $(".fb", d);
+      fb.className = "fb show " + (ok ? "ok" : "bad");
+      fb.innerHTML = `<b>${ok ? "Correct." : "Not quite."}</b> ${esc(q.e)}`;
+      if (onAnswer) onAnswer(ok);
+    }));
+    return d;
+  }
+
+  /* ---------- case digests ---------- */
+  const studied = new Set(store.get("cases", []));
+  function buildCase(c, topic) {
+    const box = el("article", "case");
+    box.id = "case-" + c.id;
+    const steps = [
+      ["Facts", `<div class="cp-k">2 · Facts</div>${c.facts}`],
+      ["Issue", `<div class="cp-k">3 · Issue</div>${c.issue}`],
+      ["Your call", `<div class="predict-q">${esc(c.predict.q)}</div>${shuffle(c.predict.options.map((o, i) => [o, i])).map(([o, i]) => `<button class="opt" data-i="${i}">${esc(o)}</button>`).join("")}<div class="fb"></div>`],
+      ["Ruling", `<div class="cp-k">4 · Ruling</div>${c.ruling}`],
+      ["Relevance", `<div class="cp-k">5 · Relevance to the topic</div>${c.relevance}<div class="remember"><b>Remember:</b> ${c.remember}</div>`],
+    ];
+    box.innerHTML = `
+      <header class="case-head">
+        <div class="case-label">Case digest · ${esc(topic)}</div>
+        <h4 class="case-title">${esc(c.title)}</h4>
+        <div class="case-cite"><span>${esc(c.gr)}</span><span>·</span><span>${esc(c.date)}</span><span>·</span><span>${esc(c.court)}</span><a href="${c.url}" target="_blank" rel="noopener">Full text on Lawphil ↗</a></div>
+        ${c.connection ? `<div class="case-conn"><b>Why this case:</b> ${c.connection}</div>` : ""}
+      </header>
+      <div class="case-tabs" role="tablist">${steps.map((s, i) => `<button role="tab" data-i="${i}"><i>${i + 1}</i>${s[0]}</button>`).join("")}</div>
+      <div class="case-body">${steps.map((s, i) => `<div class="case-panel ${i === 2 ? "p-call" : ""}" data-i="${i}">${s[1]}</div>`).join("")}</div>
+      <div class="case-foot"><span class="case-steps"></span>
+        <div class="grp"><button class="btn small" data-nav="-1">← Back</button><button class="btn small primary" data-nav="1">Next →</button>
+        <button class="btn small" data-full aria-pressed="false">Show full digest</button></div></div>`;
+    let cur = 0;
+    const tabs = $$(".case-tabs button", box), panels = $$(".case-panel", box);
+    const go = (i) => {
+      cur = Math.max(0, Math.min(steps.length - 1, i));
+      tabs.forEach((t, j) => { t.setAttribute("aria-selected", j === cur); if (j <= cur) t.classList.add("seen"); });
+      panels.forEach((p, j) => p.classList.toggle("on", j === cur));
+      $(".case-steps", box).textContent = `Step ${cur + 1} of ${steps.length}`;
+      $('[data-nav="-1"]', box).disabled = cur === 0;
+      $('[data-nav="1"]', box).textContent = cur === steps.length - 1 ? "Done ✓" : "Next →";
+      if (cur === steps.length - 1 && !studied.has(c.id)) { studied.add(c.id); store.set("cases", [...studied]); updateProgress(); }
+    };
+    tabs.forEach((t) => t.addEventListener("click", () => go(+t.dataset.i)));
+    $$("[data-nav]", box).forEach((b) => b.addEventListener("click", () => {
+      if (+b.dataset.nav === 1 && cur === steps.length - 1) { box.scrollIntoView({ behavior: "smooth", block: "end" }); return; }
+      go(cur + +b.dataset.nav);
+    }));
+    const call = $(".p-call", box);
+    $$(".opt", call).forEach((b) => b.addEventListener("click", () => {
+      const i = +b.dataset.i, ok = i === c.predict.answer;
+      $$(".opt", call).forEach((x) => { x.disabled = true; if (+x.dataset.i === c.predict.answer) x.classList.add("right"); });
+      if (!ok) b.classList.add("wrong");
+      const fb = $(".fb", call);
+      fb.className = "fb show " + (ok ? "ok" : "bad");
+      fb.innerHTML = ok ? "<b>Good legal instinct!</b> Open <b>Ruling</b> to see the Court's reasoning." : "<b>The Court ruled the other way.</b> Open <b>Ruling</b> to see why.";
+    }));
+    const full = $("[data-full]", box);
+    full.addEventListener("click", () => {
+      const on = !box.classList.contains("full");
+      box.classList.toggle("full", on); full.setAttribute("aria-pressed", on);
+      full.textContent = on ? "Step-by-step view" : "Show full digest";
+      if (on && !studied.has(c.id)) { studied.add(c.id); store.set("cases", [...studied]); updateProgress(); }
+    });
+    go(0);
+    return box;
+  }
+  $$(".case-slot").forEach((slot) => slot.replaceWith(buildCase(D.cases[slot.dataset.case], slot.dataset.topic)));
+
+  /* ---------- section quick checks ---------- */
+  $$(".qc").forEach((qc) => {
+    const qs = D.quiz.filter((q) => q.s === qc.dataset.sec).slice(0, 3);
+    let right = 0, answered = 0;
+    qc.innerHTML = `<div class="qc-h"><h4>Quick check</h4><span class="qc-score">0 / ${qs.length} answered</span></div>`;
+    qs.forEach((q) => qc.appendChild(buildQ(q, (ok) => {
+      answered++; if (ok) right++;
+      $(".qc-score", qc).textContent = `${right} / ${qs.length} correct` + (answered === qs.length ? (right === qs.length ? " 🎉" : " · try the Practice Exam for more") : "");
+    })));
+  });
+
+  /* ---------- progress ---------- */
+  const done = new Set(store.get("done", []));
+  const secIds = D.sections.map((s) => s.id);
+  function updateProgress() {
+    secIds.forEach((id) => {
+      const on = done.has(id);
+      const a = $(`.sidebar a[data-sec="${id}"]`); if (a) a.classList.toggle("done", on);
+      const b = $(`.donebtn[data-sec="${id}"]`);
+      if (b) { b.setAttribute("aria-pressed", on); b.textContent = on ? "✓ Topic completed" : "Mark topic as complete"; }
+      const p = $(`.pill[data-state="${id}"]`); if (p) { p.classList.toggle("done", on); p.textContent = on ? "✓ Completed" : "Not yet completed"; }
+    });
+    const n = [...done].filter((x) => secIds.includes(x)).length;
+    $("#progBar").style.width = (100 * n / secIds.length) + "%";
+    $("#progTxt").textContent = `${n}/${secIds.length} topics`;
+    const cs = $("#casesStat"); if (cs) cs.textContent = `${studied.size}/${Object.keys(D.cases).length}`;
+  }
+  $$(".donebtn").forEach((b) => b.addEventListener("click", () => {
+    const id = b.dataset.sec;
+    if (done.has(id)) done.delete(id); else done.add(id);
+    store.set("done", [...done]); updateProgress();
+  }));
+  updateProgress();
+
+  /* ---------- scroll effects ---------- */
+  const readbar = $("#readbar"), toTop = $("#toTop");
+  addEventListener("scroll", () => {
+    const h = document.documentElement.scrollHeight - innerHeight;
+    readbar.style.width = (h > 0 ? 100 * scrollY / h : 0) + "%";
+    toTop.classList.toggle("on", scrollY > 900);
+  }, { passive: true });
+  toTop.addEventListener("click", () => scrollTo({ top: 0, behavior: "smooth" }));
+  if ("IntersectionObserver" in window) {
+    const tio = new IntersectionObserver((ents) => ents.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); tio.unobserve(en.target); } }), { rootMargin: "0px 0px -8% 0px" });
+    $$(".tl-item").forEach((t) => tio.observe(t));
+    const sio = new IntersectionObserver((ents) => ents.forEach((en) => {
+      if (en.isIntersecting) { $$(".sidebar a").forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + en.target.id)); }
+    }), { rootMargin: "-35% 0px -60% 0px" });
+    $$(".lesson, #lab, #takeaways, #refs").forEach((s) => sio.observe(s));
+  } else { $$(".tl-item").forEach((t) => t.classList.add("in")); }
+
+  /* ---------- mobile nav ---------- */
+  $("#menuBtn").addEventListener("click", () => document.body.classList.toggle("nav-open"));
+  $(".scrim").addEventListener("click", () => document.body.classList.remove("nav-open"));
+  $$(".sidebar a").forEach((a) => a.addEventListener("click", () => document.body.classList.remove("nav-open")));
+
+  /* ---------- study lab tabs ---------- */
+  const toolBtns = $$(".tools button");
+  function openTool(name) {
+    toolBtns.forEach((b) => b.setAttribute("aria-selected", b.dataset.tool === name));
+    $$(".tool").forEach((t) => t.classList.toggle("on", t.id === "tool-" + name));
+  }
+  toolBtns.forEach((b) => b.addEventListener("click", () => openTool(b.dataset.tool)));
+  $$("[data-open-tool]").forEach((a) => a.addEventListener("click", () => openTool(a.dataset.openTool)));
+  openTool("flash");
+
+  /* ---------- flashcards ---------- */
+  const FC = D.flash.map(([f, b]) => ({ f, b, tag: /^(RA|PD|CA|EO|Act)\b/.test(f) ? "Laws" : / v\. |Krivenko/.test(f) ? "Cases" : "Concepts" }));
+  const known = new Set(store.get("known", []));
+  let fFilter = "All", fReview = false, fOrder = [], fPos = 0;
+  const fcEl = $("#fc"), fcFront = $("#fcFront"), fcBack = $("#fcBack");
+  function fcBuild(keepPos) {
+    fOrder = FC.map((c, i) => i).filter((i) => (fFilter === "All" || FC[i].tag === fFilter) && (!fReview || !known.has(FC[i].f)));
+    if (!keepPos) fPos = 0;
+    fPos = Math.min(fPos, Math.max(0, fOrder.length - 1));
+    fcShow();
+  }
+  function fcShow() {
+    fcEl.classList.remove("flip");
+    const n = fOrder.length;
+    if (!n) { fcFront.innerHTML = `<div class="fc-term">All caught up! 🎉</div><div class="fc-hint">Every card in this set is marked as known.</div>`; fcBack.innerHTML = ""; }
+    else {
+      const c = FC[fOrder[fPos]];
+      setTimeout(() => {
+        fcFront.innerHTML = `<div class="fc-tag">${c.tag}${known.has(c.f) ? " · known ✓" : ""}</div><div class="fc-term">${esc(c.f)}</div><div class="fc-hint">Click or press Space to flip</div>`;
+        fcBack.innerHTML = `<div class="fc-tag">${esc(c.f)}</div><div>${esc(c.b)}</div>`;
+      }, 120);
+    }
+    const kn = FC.filter((c) => known.has(c.f)).length;
+    $("#fcCount").textContent = n ? `Card ${fPos + 1} / ${n} · Known ${kn}/${FC.length}` : `Known ${kn}/${FC.length}`;
+  }
+  const fcFlip = () => { if (fOrder.length) fcEl.classList.toggle("flip"); };
+  const fcMove = (d) => { if (!fOrder.length) return; fPos = (fPos + d + fOrder.length) % fOrder.length; fcShow(); };
+  fcEl.addEventListener("click", fcFlip);
+  fcEl.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); fcFlip(); } });
+  $("#fcPrev").addEventListener("click", () => fcMove(-1));
+  $("#fcNext").addEventListener("click", () => fcMove(1));
+  $("#fcFlipBtn").addEventListener("click", fcFlip);
+  $("#fcShuffle").addEventListener("click", () => { fOrder = shuffle(fOrder); fPos = 0; fcShow(); });
+  $("#fcKnow").addEventListener("click", () => { if (!fOrder.length) return; known.add(FC[fOrder[fPos]].f); store.set("known", [...known]); if (fReview) fcBuild(true); else fcMove(1); });
+  $("#fcAgain").addEventListener("click", () => { if (!fOrder.length) return; known.delete(FC[fOrder[fPos]].f); store.set("known", [...known]); fcMove(1); });
+  $$("#fcFilters .chip").forEach((ch) => ch.addEventListener("click", () => {
+    if (ch.dataset.review != null) { fReview = !fReview; ch.setAttribute("aria-pressed", fReview); }
+    else { fFilter = ch.dataset.f; $$("#fcFilters .chip[data-f]").forEach((x) => x.setAttribute("aria-pressed", x === ch)); }
+    fcBuild();
+  }));
+  document.addEventListener("keydown", (e) => {
+    if (!$("#tool-flash").classList.contains("on") || /INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)) return;
+    const r = $("#tool-flash").getBoundingClientRect();
+    if (r.bottom < 0 || r.top > innerHeight) return;
+    if (e.key === "ArrowRight") fcMove(1); else if (e.key === "ArrowLeft") fcMove(-1);
+    else if (e.key === " " && document.activeElement.tagName !== "BUTTON") { e.preventDefault(); fcFlip(); }
+  });
+  fcBuild();
+
+  /* ---------- practice exam ---------- */
+  const exBox = $("#exRun");
+  let exQs = [], exI = 0, exScore = 0, exMissed = [];
+  function exStart(list) {
+    exQs = list; exI = 0; exScore = 0; exMissed = [];
+    $("#exSetup").hidden = true; exBox.hidden = false; exNext();
+  }
+  $("#exGo").addEventListener("click", () => {
+    const scope = $("#exScope").value, n = $("#exN").value;
+    let pool = D.quiz.filter((q) => scope === "all" || D.secPart[q.s] === scope);
+    pool = shuffle(pool);
+    if (n !== "all") pool = pool.slice(0, +n);
+    exStart(pool);
+  });
+  function exNext() {
+    if (exI >= exQs.length) return exEnd();
+    const q = exQs[exI];
+    exBox.innerHTML = `<div class="ex-top"><span>Question ${exI + 1} of ${exQs.length}</span><span>Score: ${exScore}</span></div>
+      <div class="ex-bar"><i style="width:${100 * exI / exQs.length}%"></i></div><div class="pill" style="display:inline-block">${esc(D.secName[q.s])}</div>`;
+    const qd = buildQ(q, (ok) => {
+      if (ok) exScore++; else exMissed.push(q);
+      $(".ex-top span:last-child", exBox).textContent = "Score: " + exScore;
+      const nb = el("button", "btn primary", exI + 1 < exQs.length ? "Next question →" : "See results");
+      nb.style.marginTop = "10px";
+      nb.addEventListener("click", () => { exI++; exNext(); });
+      exBox.appendChild(nb); nb.focus({ preventScroll: true });
+    });
+    qd.style.border = "0"; qd.style.padding = "0"; $(".q-t", qd).className = "ex-q";
+    exBox.appendChild(qd);
+  }
+  function exEnd() {
+    const pct = Math.round(100 * exScore / exQs.length);
+    const best = Math.max(store.get("best", 0), pct); store.set("best", best);
+    const C = 2 * Math.PI * 50, off = C * (1 - pct / 100);
+    const msg = pct >= 90 ? "Excellent! You're exam-ready." : pct >= 75 ? "Passing and solid. Review the items you missed." : pct >= 50 ? "Getting there. Revisit the topics below." : "Keep going. Re-read the lessons, then retry.";
+    exBox.innerHTML = `<div class="result">
+      <svg class="ring" viewBox="0 0 120 120" role="img" aria-label="Score ${pct} percent"><circle cx="60" cy="60" r="50" fill="none" stroke="var(--surface2)" stroke-width="12"/>
+      <circle cx="60" cy="60" r="50" fill="none" stroke="${pct >= 75 ? "var(--ok)" : "var(--ochre)"}" stroke-width="12" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${off}" transform="rotate(-90 60 60)"/>
+      <text x="60" y="68" text-anchor="middle" font-size="26">${pct}%</text></svg>
+      <div><h3 style="margin:0">${exScore} of ${exQs.length} correct</h3><p style="margin:.3em 0">${msg}</p><p class="hint" style="margin:0">Best score on this device: ${best}%</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">${exMissed.length ? '<button class="btn primary" id="exRetry">Retry missed (' + exMissed.length + ")</button>" : ""}<button class="btn" id="exNew">New exam</button></div></div></div>
+      ${exMissed.length ? `<div class="missed"><h4 class="sub" style="--c:var(--bad)">Review these</h4><ol class="list">${exMissed.map((q) => `<li><b>${esc(q.q)}</b><br>Answer: <span class="law">${esc(q.c[q.a])}</span>. ${esc(q.e)}</li>`).join("")}</ol></div>` : ""}`;
+    const r = $("#exRetry", exBox); if (r) r.addEventListener("click", () => exStart(shuffle(exMissed)));
+    $("#exNew", exBox).addEventListener("click", () => { exBox.hidden = true; $("#exSetup").hidden = false; });
+  }
+
+  /* ---------- which came first ---------- */
+  let dPlayed = 0, dRight = 0, dStreak = 0, dBest = store.get("streak", 0);
+  const duel = $("#duel");
+  function dRound() {
+    let a, b;
+    do { [a, b] = shuffle(D.chrono).slice(0, 2); } while (a[1] === b[1]);
+    duel.classList.remove("revealed");
+    duel.innerHTML = `<button class="ev">${esc(a[0])}<span class="yr">${a[1]}</span></button><div class="or">or</div><button class="ev">${esc(b[0])}<span class="yr">${b[1]}</span></button>`;
+    const evs = $$(".ev", duel), earlier = a[1] < b[1] ? 0 : 1;
+    evs.forEach((bt, i) => bt.addEventListener("click", () => {
+      if (duel.classList.contains("revealed")) return;
+      duel.classList.add("revealed");
+      evs.forEach((x) => (x.disabled = true));
+      evs[earlier].classList.add("right"); if (i !== earlier) evs[i].classList.add("wrong");
+      dPlayed++;
+      if (i === earlier) { dRight++; dStreak++; if (dStreak > dBest) { dBest = dStreak; store.set("streak", dBest); } } else dStreak = 0;
+      dScore();
+    }));
+  }
+  function dScore() { $("#dPlayed").textContent = `${dRight}/${dPlayed}`; $("#dStreak").textContent = dStreak; $("#dBest").textContent = dBest; }
+  $("#dNext").addEventListener("click", dRound);
+  dRound(); dScore();
+
+  /* ---------- case matcher ---------- */
+  function mBuild() {
+    const L = shuffle(D.caseList), R = shuffle(D.caseList);
+    let sel = null, got = 0, miss = 0;
+    $("#mCases").innerHTML = L.map((c) => `<button class="mi" data-id="${c.id}"><b>${esc(c.short)}</b> <span class="yr">(${c.year})</span></button>`).join("");
+    $("#mDocs").innerHTML = R.map((c) => `<button class="mi" data-id="${c.id}">${esc(c.doctrine)}</button>`).join("");
+    const stat = () => { $("#mStat").textContent = got === L.length ? `All ${got} matched with ${miss} mistake${miss === 1 ? "" : "s"}. 🎉` : `Matched ${got}/${L.length} · Mistakes ${miss}`; };
+    $$("#mCases .mi").forEach((b) => b.addEventListener("click", () => {
+      if (b.classList.contains("ok")) return;
+      $$("#mCases .mi").forEach((x) => x.classList.remove("sel")); b.classList.add("sel"); sel = b;
+    }));
+    $$("#mDocs .mi").forEach((b) => b.addEventListener("click", () => {
+      if (b.classList.contains("ok") || !sel) return;
+      if (b.dataset.id === sel.dataset.id) { b.classList.add("ok"); sel.classList.add("ok"); sel.classList.remove("sel"); b.disabled = sel.disabled = true; sel = null; got++; }
+      else { miss++; b.classList.remove("no"); void b.offsetWidth; b.classList.add("no"); }
+      stat();
+    }));
+    stat();
+  }
+  $("#mReset").addEventListener("click", mBuild);
+  mBuild();
+
+  /* ---------- takeaways ---------- */
+  const tk = new Set(store.get("tk", []));
+  $$(".tk li").forEach((li, i) => {
+    li.classList.toggle("got", tk.has(i));
+    li.addEventListener("click", (e) => {
+      if (e.target.closest("a")) return;
+      if (tk.has(i)) tk.delete(i); else tk.add(i);
+      li.classList.toggle("got", tk.has(i)); store.set("tk", [...tk]);
+    });
+  });
+
+  /* ---------- cheat sheet search ---------- */
+  const cs = $("#csSearch");
+  cs.addEventListener("input", () => {
+    const v = cs.value.trim().toLowerCase();
+    $$("#csTable tbody tr").forEach((tr) => { tr.hidden = v && !tr.textContent.toLowerCase().includes(v); });
+  });
+})();
+</script>
+</body></html>
